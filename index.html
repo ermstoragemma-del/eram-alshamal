@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;700&display=swap'); body { font-family: 'Cairo', sans-serif; }</style>
+</head>
+<body class="bg-slate-50">
+
+ <!-- Hero Section (Absolute Positioning for maximum top) -->
+    <header class="h-screen flex flex-col justify-center items-center text-center px-4 bg-gradient-to-b from-blue-900 to-blue-800 text-white relative">
+        
+        <!-- حاوية الشعار - تموضع مطلق في الأعلى -->
+        <div class="absolute top-0 left-0 w-full pt-6 md:pt-10 flex justify-center z-10 animate__animated animate__fadeInDown">
+            <img src="logo.png" alt="شعار إِرَمْ الشَّمَال" class="h-20 md:h-28 w-auto drop-shadow-lg">
+        </div>
+
+        <!-- النصوص والأزرار - ستتمركز الآن في منتصف الشاشة تماماً -->
+        <div class="flex flex-col items-center justify-center mt-16 md:mt-0">
+            <h1 class="text-5xl md:text-7xl font-bold animate__animated animate__fadeInDown animate__delay-100ms">إِرَمْ الشَّمَال</h1>
+            <p class="text-xl md:text-2xl mt-4 opacity-90 animate__animated animate__fadeInUp animate__delay-200ms">نقل وتخزين أثاث بمعايير تقنية</p>
+            
+            <!-- الأزرار المزدوجة -->
+            <div class="mt-10 flex flex-col md:flex-row gap-4 animate__animated animate__zoomIn animate__delay-300ms">
+                <!-- زر الواتساب -->
+                <a href="https://wa.me/966534308457" class="flex items-center gap-2 bg-green-500 hover:bg-green-600 px-8 py-4 rounded-full font-bold shadow-lg transition-transform hover:scale-105">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    واتساب
+                </a>
+                <!-- زر الاتصال -->
+                <a href="tel:+966534308457" class="flex items-center gap-2 bg-white text-blue-900 hover:bg-slate-100 px-8 py-4 rounded-full font-bold shadow-lg transition-transform hover:scale-105">
+                    <i data-lucide="phone" class="w-5 h-5"></i>
+                    اتصال مباشر
+                </a>
+            </div>
+        </div>
+    </header>
+    <!-- Services -->
+    <section class="py-20 max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-16 animate__animated animate__fadeIn">خدماتنا اللوجستية</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Card 1 -->
+            <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:-translate-y-2">
+                <i data-lucide="shield-check" class="w-12 h-12 text-blue-600 mb-4"></i>
+                <h3 class="text-xl font-bold mb-2">تخزين آمن</h3>
+                <p class="text-slate-600">مستودعاتنا مجهزة بأنظمة مراقبة لحماية ممتلكاتك.</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:-translate-y-2">
+                <i data-lucide="truck" class="w-12 h-12 text-blue-600 mb-4"></i>
+                <h3 class="text-xl font-bold mb-2">نقل متخصص</h3>
+                <p class="text-slate-600">فريق فني متخصص في فك وتركيب ونقل الأثاث.</p>
+            </div>
+            <!-- Card 3 -->
+            <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition duration-500 transform hover:-translate-y-2">
+                <i data-lucide="clock" class="w-12 h-12 text-blue-600 mb-4"></i>
+                <h3 class="text-xl font-bold mb-2">التزام بالوقت</h3>
+                <p class="text-slate-600">سرعة في التنفيذ مع دقة متناهية في المواعيد.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
