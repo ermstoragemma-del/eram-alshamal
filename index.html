@@ -3,36 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إِرَمْ الشَّمَال | نقل وتخزين الأثاث</title>
+    <title>إرم الشمال | طلب نقل عفش</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>body { font-family: 'Cairo', sans-serif; }</style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
-<body class="bg-slate-50 min-h-screen flex flex-col items-center justify-center p-2 text-slate-900">
+<body class="bg-gray-50 text-gray-800">
 
-    <!-- المربع الرئيسي (الشعار) -->
-    <header class="bg-white p-4 rounded-2xl shadow-lg mb-4 text-center border border-slate-200 w-full max-w-lg">
-        <img src="logo.png" alt="شعار إرم الشمال" class="h-20 mx-auto mb-2">
-        <h1 class="text-2xl font-extrabold text-slate-950">إِرَمْ الشَّمَال</h1>
-        <p class="text-slate-600 text-sm font-semibold">نقل وتخزين أثاث بمعايير تقنية</p>
+    <!-- الترويسة الفخمة -->
+    <header class="relative bg-[#FDFBF7] py-10 px-4 text-center shadow-sm overflow-hidden border-b border-[#E5E0D8]">
+        <div class="absolute inset-0 opacity-[0.05]" style="background-image: repeating-linear-gradient(45deg, #A1887F 0, #A1887F 10px, transparent 0, transparent 20px), repeating-linear-gradient(-45deg, #A1887F 0, #A1887F 10px, #FDFBF7 0, #FDFBF7 20px);"></div>
+        <div class="relative z-10">
+            <div class="inline-block bg-white p-3 rounded-full shadow-md mb-4 border border-[#E5E0D8]">
+                <img src="logo.png" alt="إرم الشمال" class="h-20 w-20 object-contain">
+            </div>
+            <h1 class="text-3xl font-bold text-[#3E2723] mb-1">مخازن إرم الشمال</h1>
+            <p class="text-[#8D6E63] mb-6 font-medium">للخدمات اللوجستية نقل و تخزين الاثاث </p>
+            <div class="flex justify-center gap-3">
+                <a href="https://wa.me/966569707969" class="bg-[#A1887F] hover:bg-[#8D6E63] text-white px-6 py-2 rounded-full font-bold transition shadow-sm">واتساب</a>
+                <a href="tel:+966569707969" class="bg-transparent hover:bg-[#F0EDE6] text-[#5D4037] px-6 py-2 rounded-full font-bold transition border border-[#A1887F]">اتصل بنا</a>
+            </div>
+        </div>
     </header>
 
-    <!-- شبكة الصور الثلاث (ثابتة في صف واحد للكمبيوتر والجوال) -->
-    <div class="grid grid-cols-3 gap-2 mb-4 w-full max-w-lg">
-        <img src="work1.png" class="rounded-xl h-32 w-full object-cover shadow-md border border-white">
-        <img src="work2.png" class="rounded-xl h-32 w-full object-cover shadow-md border border-white">
-        <img src="work3.png" class="rounded-xl h-32 w-full object-cover shadow-md border border-white">
-    </div>
+    <section class="max-w-4xl mx-auto my-6 px-4">
+        <div class="bg-white p-6 rounded-2xl shadow-xl">
+            <h3 class="text-lg font-bold mb-2">حدد المواقع:</h3>
+            <p class="text-xs text-red-500 mb-4 font-bold">تنبيه: (أزرق=تحميل) - (أحمر=تنزيل)</p>
+            <div id="map" class="h-48 w-full rounded-xl border mb-4"></div>
+            
+            <div class="grid grid-cols-2 gap-4 mb-4">
+                <div><label class="block text-sm font-bold">طابق التحميل</label><input type="number" id="f_from" class="w-full p-2 border rounded" value="0"></div>
+                <div><label class="block text-sm font-bold">طابق التنزيل</label><input type="number" id="f_to" class="w-full p-2 border rounded" value="0"></div>
+            </div>
 
-    <!-- الأزرار -->
-    <div class="flex gap-2 w-full max-w-lg">
-        <a href="tel:+966534308457" class="flex-1 bg-white hover:bg-slate-100 text-slate-900 py-3 rounded-xl font-bold border border-slate-300 text-center text-sm shadow-sm">اتصال</a>
-        <a href="https://wa.me/966534308457" class="flex-1 bg-green-500 hover:bg-green-600 text-white py-3 rounded-xl font-bold text-center text-sm shadow-sm">واتساب</a>
-    </div>
+            <!-- خيارات الفك والتغليف -->
+            <div class="space-y-2 mb-6 border-b pb-4">
+                <div class="flex justify-between"><span>فك مكيفات؟</span><select id="ac_work" class="border rounded p-1"><option>لا</option><option>نعم</option></select></div>
+                <div class="flex justify-between"><span>فك دواليب؟</span><select id="wardrobe_work" class="border rounded p-1"><option>لا</option><option>نعم</option></select></div>
+                <div class="flex justify-between"><span>طلب تغليف؟</span><select id="packaging_work" class="border rounded p-1"><option>لا</option><option>نعم</option></select></div>
+            </div>
 
-    <footer class="mt-4 text-[10px] text-slate-400">
-        &copy; 2024 إِرَمْ الشَّمَال.
-    </footer>
+            <div class="space-y-3 mb-6" id="items-list">
+                <script>function changeVal(id, delta) { let el = document.getElementById(id); let val = parseInt(el.value) + delta; if(val >= 0) el.value = val; } </script>
+                <div class="flex items-center gap-2"><span class="flex-1 text-sm">غرفة نوم</span><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('bed_c', -1)">-</button><input type="number" id="bed_c" class="w-10 text-center border" value="0"><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('bed_c', 1)">+</button><select id="bed_s" class="w-20 border"><option>كبير</option><option>متوسط</option></select></div>
+                <div class="flex items-center gap-2"><span class="flex-1 text-sm">ثلاجة</span><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('fridge_c', -1)">-</button><input type="number" id="fridge_c" class="w-10 text-center border" value="0"><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('fridge_c', 1)">+</button><select id="fridge_s" class="w-20 border"><option>كبير</option><option>متوسط</option></select></div>
+                <div class="flex items-center gap-2"><span class="flex-1 text-sm">فرن</span><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('oven_c', -1)">-</button><input type="number" id="oven_c" class="w-10 text-center border" value="0"><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('oven_c', 1)">+</button><select id="oven_s" class="w-20 border"><option>كبير</option><option>صغير</option></select></div>
+                <div class="flex items-center gap-2"><span class="flex-1 text-sm">تلفزيون</span><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('tv_c', -1)">-</button><input type="number" id="tv_c" class="w-10 text-center border" value="0"><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('tv_c', 1)">+</button><select id="tv_s" class="w-20 border"><option>كبير</option><option>صغير</option></select></div>
+                <div class="flex items-center gap-2"><span class="flex-1 text-sm">كنب</span><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('sofa_c', -1)">-</button><input type="number" id="sofa_c" class="w-10 text-center border" value="0"><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('sofa_c', 1)">+</button><select id="sofa_s" class="w-20 border"><option>كبير</option><option>متوسط</option></select></div>
+                <div class="flex items-center gap-2"><span class="flex-1 text-sm">طاولة</span><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('table_c', -1)">-</button><input type="number" id="table_c" class="w-10 text-center border" value="0"><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('table_c', 1)">+</button><select id="table_s" class="w-20 border"><option>كبير</option><option>متوسط</option></select></div>
+                <div class="flex items-center gap-2"><span class="flex-1 text-sm">كرتون</span><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('box_c', -1)">-</button><input type="number" id="box_c" class="w-10 text-center border" value="0"><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('box_c', 1)">+</button><select id="box_s" class="w-20 border"><option>كبير</option><option>صغير</option></select></div>
+            </div>
 
+            <button onclick="sendWhatsApp()" class="w-full bg-green-600 text-white py-4 rounded-xl font-bold hover:bg-green-700 transition">إرسال الطلب عبر واتساب</button>
+        </div>
+    </section>
+
+    <script>
+        var map = L.map('map').setView([24.7136, 46.6753], 12);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+        var m1, m2;
+        map.on('click', function(e) {
+            if (!m1) { m1 = L.marker(e.latlng).addTo(map).bindPopup("التحميل").openPopup(); }
+            else if (!m2) { m2 = L.marker(e.latlng, {icon: L.divIcon({className: 'bg-red-500 rounded-full w-4 h-4'})}).addTo(map).bindPopup("التنزيل").openPopup(); }
+        });
+
+        function sendWhatsApp() {
+            if(!m1 || !m2) { alert("حدد المواقع على الخريطة أولاً!"); return; }
+            let l1 = `https://www.google.com/maps/search/?api=1&query=${m1.getLatLng().lat},${m1.getLatLng().lng}`;
+            let l2 = `https://www.google.com/maps/search/?api=1&query=${m2.getLatLng().lat},${m2.getLatLng().lng}`;
+            let msg = "طلب نقل إرم الشمال:\n";
+            msg += "غرفة نوم: " + document.getElementById('bed_c').value + " (" + document.getElementById('bed_s').value + ")\n";
+            msg += "ثلاجة: " + document.getElementById('fridge_c').value + " (" + document.getElementById('fridge_s').value + ")\n";
+            msg += "فرن: " + document.getElementById('oven_c').value + " (" + document.getElementById('oven_s').value + ")\n";
+            msg += "تلفزيون: " + document.getElementById('tv_c').value + " (" + document.getElementById('tv_s').value + ")\n";
+            msg += "كنب: " + document.getElementById('sofa_c').value + " (" + document.getElementById('sofa_s').value + ")\n";
+            msg += "طاولة: " + document.getElementById('table_c').value + " (" + document.getElementById('table_s').value + ")\n";
+            msg += "كرتون: " + document.getElementById('box_c').value + " (" + document.getElementById('box_s').value + ")\n";
+            msg += "فك مكيفات: " + document.getElementById('ac_work').value + "\n";
+            msg += "فك دواليب: " + document.getElementById('wardrobe_work').value + "\n";
+            msg += "طلب تغليف: " + document.getElementById('packaging_work').value + "\n";
+            msg += "طابق التحميل: " + document.getElementById('f_from').value + "\n";
+            msg += "طابق التنزيل: " + document.getElementById('f_to').value + "\n";
+            msg += "التحميل: " + l1 + "\n";
+            msg += "التنزيل: " + l2;
+            window.location.href = "https://wa.me/966569707969?text=" + encodeURIComponent(msg);
+        }
+    </script>
 </body>
 </html>
