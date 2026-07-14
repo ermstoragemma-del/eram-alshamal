@@ -7,8 +7,23 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'AW-18213887104');
+    </script>
+
+    <!-- كود التتبع عند الضغط -->
+    <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+          'send_to': 'AW-18213887104/uSHQCLEkh9AcEIC5h-1D',
+          'event_callback': callback
+      });
+      return false;
+    }
     </script>
 
     <meta charset="UTF-8">
@@ -18,8 +33,6 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
-<body class="bg-gray-50 text-gray-800">
-
 <body class="bg-gray-50 text-gray-800">
 
     <!-- الترويسة الفخمة -->
@@ -83,7 +96,8 @@
         function sendWhatsApp() {
             if(!m1 || !m2) { alert("حدد المواقع على الخريطة أولاً!"); return; }
             let l1 = `https://www.google.com/maps/search/?api=1&query=${m1.getLatLng().lat},${m1.getLatLng().lng}`;
-            let l2 = `https://www.google.com/maps/search/?api=1&query=${m2.getLatLng().lat},${m2.getLatLng().lng}`;
+            let l2 = `https://www.google.com/maps/search/?api=1${m2.getLatLng().lat},${m2.getLatLng().lng}`;
+            
             let msg = "طلب نقل إرم الشمال:\n";
             msg += "غرفة نوم: " + document.getElementById('bed_c').value + " (" + document.getElementById('bed_s').value + ")\n";
             msg += "ثلاجة: " + document.getElementById('fridge_c').value + " (" + document.getElementById('fridge_s').value + ")\n";
@@ -99,7 +113,9 @@
             msg += "طابق التنزيل: " + document.getElementById('f_to').value + "\n";
             msg += "التحميل: " + l1 + "\n";
             msg += "التنزيل: " + l2;
-            window.location.href = "https://wa.me/966534308457?text=" + encodeURIComponent(msg);
+
+            let whatsappUrl = "https://wa.me/966534308457?text=" + encodeURIComponent(msg);
+            gtag_report_conversion(whatsappUrl);
         }
     </script>
 </body>
