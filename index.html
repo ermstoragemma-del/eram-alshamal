@@ -96,7 +96,7 @@
         function sendWhatsApp() {
             if(!m1 || !m2) { alert("حدد المواقع على الخريطة أولاً!"); return; }
             let l1 = `https://www.google.com/maps/search/?api=1&query=${m1.getLatLng().lat},${m1.getLatLng().lng}`;
-            let l2 = `https://www.google.com/maps/search/?api=1${m2.getLatLng().lat},${m2.getLatLng().lng}`;
+            let l2 = `https://www.google.com/maps/search/?api=1&query=${m2.getLatLng().lat},${m2.getLatLng().lng}`;
             
             let msg = "طلب نقل إرم الشمال:\n";
             msg += "غرفة نوم: " + document.getElementById('bed_c').value + " (" + document.getElementById('bed_s').value + ")\n";
