@@ -35,11 +35,27 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>body { font-family: 'Cairo', sans-serif; }</style>
+    <style>
+        body { font-family: 'Cairo', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50 text-gray-800 pb-12">
 
-    <!-- الترويسة الفخمة مع روابط التنقل السريع -->
+    <!-- زر الواتساب العائم الثابت مع رسالة توجيهية فوقه -->
+    <div class="fixed bottom-6 left-6 z-50 flex items-center gap-3">
+        <div class="bg-white px-4 py-2 rounded-2xl shadow-lg border border-slate-200 text-xs font-bold text-slate-800 hidden sm:block animate-bounce">
+            تواصل معنا واتساب واطلب خدمتك الآن ⚡
+        </div>
+        <a href="https://wa.me/966534308457" onclick="return gtag_report_conversion('https://wa.me/966534308457');" target="_blank" class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110">
+            <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.124-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+        </a>
+    </div>
+
+    <!-- الترويسة الفخمة -->
     <header class="relative bg-[#FDFBF7] py-8 px-4 text-center shadow-sm overflow-hidden border-b border-[#E5E0D8]">
         <div class="absolute inset-0 opacity-[0.05]" style="background-image: repeating-linear-gradient(45deg, #A1887F 0, #A1887F 10px, transparent 0, transparent 20px), repeating-linear-gradient(-45deg, #A1887F 0, #A1887F 10px, #FDFBF7 0, #FDFBF7 20px);"></div>
         <div class="relative z-10 max-w-4xl mx-auto">
@@ -67,7 +83,13 @@
     <!-- حاسبة الطلبات والخريطة -->
     <section class="max-w-4xl mx-auto my-6 px-4">
         <div class="bg-white p-6 rounded-2xl shadow-xl">
-            <h3 class="text-lg font-bold mb-2">حدد المواقع:</h3>
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-2 gap-2">
+                <h3 class="text-lg font-bold">حدد المواقع:</h3>
+                <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1.5 rounded-lg border border-amber-200">
+                    💡 بعد الانتهاء من تحديد المواقع والأغراض، ستجد زر إرسال الطلب في أسفل الصفحة
+                </span>
+            </div>
+            
             <p class="text-xs text-red-500 mb-4 font-bold">تنبيه: (أزرق=تحميل) - (أحمر=تنزيل)</p>
             <div id="map" class="h-48 w-full rounded-xl border mb-4"></div>
             
@@ -101,29 +123,76 @@
         </div>
     </section>
 
-    <!-- قسم التقييمات ورابط خرائط جوجل -->
+    <!-- قسم السلايدر المتحرك للتقييمات (يتوقف للماوس واللمس بالاصبع للآيفون) -->
     <section class="max-w-4xl mx-auto my-6 px-4">
-        <div class="bg-white p-6 rounded-2xl shadow-xl">
-            <h3 class="text-sm font-bold text-slate-700 mb-3 text-center">⭐ آراء بعض عملائنا الكرام</h3>
-            <div class="space-y-3 mb-4">
-                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs">
+        <div class="bg-white p-6 rounded-2xl shadow-xl relative">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-sm font-bold text-slate-700">⭐ آراء عملائنا الكرام</h3>
+                <div class="flex gap-2">
+                    <button onclick="scrollReviews('right')" class="bg-slate-100 hover:bg-slate-200 text-slate-800 p-2 rounded-full transition shadow-sm" aria-label="السابق">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </button>
+                    <button onclick="scrollReviews('left')" class="bg-slate-100 hover:bg-slate-200 text-slate-800 p-2 rounded-full transition shadow-sm" aria-label="التالي">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div id="reviews-container" class="flex gap-4 overflow-x-auto no-scrollbar scroll-smooth pb-2" style="scroll-snap-type: x mandatory;">
+                
+                <div class="min-w-[280px] sm:min-w-[320px] flex-1 bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs shadow-sm" style="scroll-snap-align: start;">
                     <div class="flex justify-between items-center mb-1">
                         <span class="font-bold text-slate-900">أبو عبد الله </span>
                         <span class="text-yellow-500">★★★★★</span>
                     </div>
-                    <p class="text-slate-600">"ما شاء الله تبارك الله، شغل مرتب وسريع وفكوا و ركبوا الغرفة بدون ولا خدش. الله يعطيهم الععافية."</p>
+                    <p class="text-slate-600">"ما شاء الله تبارك الله، شغل مرتب وسريع وفكوا وركبوا الغرفة بدون ولا خدش. الله يعطيهم العافية."</p>
                 </div>
-                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs">
+
+                <div class="min-w-[280px] sm:min-w-[320px] flex-1 bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs shadow-sm" style="scroll-snap-align: start;">
                     <div class="flex justify-between items-center mb-1">
                         <span class="font-bold text-slate-900">سلطان </span>
                         <span class="text-yellow-500">★★★★★</span>
                     </div>
                     <p class="text-slate-600">"خدمة التخزين عندهم ممتازة والمستودعات نظيفة وآمنة. أنصح بالتعامل معهم وبقوة."</p>
                 </div>
+
+                <div class="min-w-[280px] sm:min-w-[320px] flex-1 bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs shadow-sm" style="scroll-snap-align: start;">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-bold text-slate-900"> ام سعود </span>
+                        <span class="text-yellow-500">★★★★★</span>
+                    </div>
+                    <p class="text-slate-600">"التزام بالمواعيد ودقة في التغليف، نقلت بيتي بالكامل في الرياض وما حسيت بأي تعب معهم."</p>
+                </div>
+
+                <div class="min-w-[280px] sm:min-w-[320px] flex-1 bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs shadow-sm" style="scroll-snap-align: start;">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-bold text-slate-900"> amal </span>
+                        <span class="text-yellow-500">★★★★★</span>
+                    </div>
+                    <p class="text-slate-600">"خدمة العملاء ممتازة والفريق محترف جداً في فك وتركيب المكيفات والدواليب بدون أي مشاكل."</p>
+                </div>
+
+                <div class="min-w-[280px] sm:min-w-[320px] flex-1 bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs shadow-sm" style="scroll-snap-align: start;">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-bold text-slate-900">محمد العتيبي</span>
+                        <span class="text-yellow-500">★★★★★</span>
+                    </div>
+                    <p class="text-slate-600">"أسعارهم مناسبة جداً مقارنة بجودة الخدمة العالية، الله يبارك لهم، وانشالله مو آخر تعامل."</p>
+                </div>
+
+                <div class="min-w-[280px] sm:min-w-[320px] flex-1 bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs shadow-sm" style="scroll-snap-align: start;">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-bold text-slate-900">عبد العزيز الشهري</span>
+                        <span class="text-yellow-500">★★★★★</span>
+                    </div>
+                    <p class="text-slate-600">"المستودعات آمنة ونظيفة، خزنت عفشي عندهم لمدة شهور واستلمته بنفس الجودة والنظافة."</p>
+                </div>
+
             </div>
-            <div class="text-center">
+
+            <div class="text-center mt-4">
                 <a href="https://maps.google.com/?q=مخازن+أرم+الشمال+للتخزين" target="_blank" class="text-xs text-blue-600 font-bold hover:underline">
-                    📍 اضغط هنا لمشاهدة جميع تقييماتنا الحقيقية على خرائط جوجل
+                    📍 اضغط هنا لمشاهدة جميع تقييماتنا على خرائط جوجل
                 </a>
             </div>
         </div>
@@ -165,6 +234,45 @@
 
             let whatsappUrl = "https://wa.me/966534308457?text=" + encodeURIComponent(msg);
             gtag_report_conversion(whatsappUrl);
+        }
+
+        // السلايدر المتحرك مع دعم الماوس واللمس (للآيفون والجوالات)
+        const container = document.getElementById('reviews-container');
+        let autoScroll = setInterval(() => {
+            if (container) {
+                if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
+                    container.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    container.scrollBy({ left: 320, behavior: 'smooth' });
+                }
+            }
+        }, 3500);
+
+        // إيقاف الحركة عند لمس الشاشة بإصبع المستخدم (آيفون/جوال) أو عند مرور الماوس
+        function stopAutoScroll() { clearInterval(autoScroll); }
+        function startAutoScroll() {
+            autoScroll = setInterval(() => {
+                if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
+                    container.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    container.scrollBy({ left: 320, behavior: 'smooth' });
+                }
+            }, 3500);
+        }
+
+        container.addEventListener('mouseenter', stopAutoScroll);
+        container.addEventListener('mouseleave', startAutoScroll);
+        
+        // أحداث اللمس خصيصاً للآيفون والجوالات
+        container.addEventListener('touchstart', stopAutoScroll);
+        container.addEventListener('touchend', startAutoScroll);
+
+        function scrollReviews(direction) {
+            if (direction === 'left') {
+                container.scrollBy({ left: 320, behavior: 'smooth' });
+            } else {
+                container.scrollBy({ left: -320, behavior: 'smooth' });
+            }
         }
     </script>
 </body>
