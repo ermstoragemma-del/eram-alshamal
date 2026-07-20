@@ -28,31 +28,43 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>نقل عفش بالرياض | فك وتركيب وتغليف | مخازن إرم الشمال</title>
-<meta name="description" content="تبحث عن نقل عفش بالرياض؟ مخازن إرم الشمال توفر لك خدمة نقل أثاث احترافية مع الفك والتركيب والتغليف. نضمن لك وصول أثاثك بأمان. تواصل معنا الآن.">
-<meta name="keywords" content="نقل عفش, نقل أثاث, نقل عفش بالرياض, شركة نقل عفش, فك وتركيب أثاث">
+    <title>نقل عفش بالرياض | فك وتركيب وتغليف | مخازن إرم الشمال</title>
+    <meta name="description" content="تبحث عن نقل عفش بالرياض؟ مخازن إرم الشمال توفر لك خدمة نقل أثاث احترافية مع الفك والتركيب والتغليف. نضمن لك وصول أثاثك بأمان. تواصل معنا الآن.">
+    <meta name="keywords" content="نقل عفش, نقل أثاث, نقل عفش بالرياض, شركة نقل عفش, فك وتركيب أثاث">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Cairo', sans-serif; }</style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-    <!-- الترويسة الفخمة -->
-    <header class="relative bg-[#FDFBF7] py-10 px-4 text-center shadow-sm overflow-hidden border-b border-[#E5E0D8]">
+    <!-- الترويسة الفخمة مع روابط التنقل السريع -->
+    <header class="relative bg-[#FDFBF7] py-8 px-4 text-center shadow-sm overflow-hidden border-b border-[#E5E0D8]">
         <div class="absolute inset-0 opacity-[0.05]" style="background-image: repeating-linear-gradient(45deg, #A1887F 0, #A1887F 10px, transparent 0, transparent 20px), repeating-linear-gradient(-45deg, #A1887F 0, #A1887F 10px, #FDFBF7 0, #FDFBF7 20px);"></div>
-        <div class="relative z-10">
+        <div class="relative z-10 max-w-4xl mx-auto">
             <div class="inline-block bg-white p-3 rounded-full shadow-md mb-4 border border-[#E5E0D8]">
                 <img src="logo.png" alt="إرم الشمال" class="h-20 w-20 object-contain">
             </div>
             <h1 class="text-3xl font-bold text-[#3E2723] mb-1">مخازن إرم الشمال</h1>
-            <p class="text-[#8D6E63] mb-6 font-medium">للخدمات اللوجستية نقل و تخزين الاثاث </p>
+            <p class="text-[#8D6E63] mb-6 font-medium">للخدمات اللوجستية نقل و تخزين الاثاث بالرياض</p>
             <div class="flex justify-center gap-3">
-                <a href="https://wa.me/966534308457" class="bg-[#A1887F] hover:bg-[#8D6E63] text-white px-6 py-2 rounded-full font-bold transition shadow-sm">واتساب</a>
-                <a href="tel:+966534308457" class="bg-transparent hover:bg-[#F0EDE6] text-[#5D4037] px-6 py-2 rounded-full font-bold transition border border-[#A1887F]">اتصل بنا</a>
+                <a href="https://wa.me/966534308457" onclick="return gtag_report_conversion('https://wa.me/966534308457');" class="bg-[#A1887F] hover:bg-[#8D6E63] text-white px-6 py-2 rounded-full font-bold transition shadow-sm">واتساب</a>
+                <a href="tel:+966534308457" onclick="return gtag_report_conversion('tel:+966534308457');" class="bg-transparent hover:bg-[#F0EDE6] text-[#5D4037] px-6 py-2 rounded-full font-bold transition border border-[#A1887F]">اتصل بنا</a>
             </div>
         </div>
     </header>
 
+    <!-- شبكة الصور الثلاث (معرض الأعمال) -->
+    <section class="max-w-4xl mx-auto my-6 px-4">
+        <div class="grid grid-cols-3 gap-2 mb-6">
+            <img src="work1.png" alt="نقل أثاث" class="rounded-xl h-28 w-full object-cover shadow-md border border-white">
+            <img src="work2.png" alt="تغليف أثاث" class="rounded-xl h-28 w-full object-cover shadow-md border border-white">
+            <img src="work3.png" alt="تحميل شاحنة" class="rounded-xl h-28 w-full object-cover shadow-md border border-white">
+        </div>
+    </section>
+
+    <!-- حاسبة الطلبات والخريطة -->
     <section class="max-w-4xl mx-auto my-6 px-4">
         <div class="bg-white p-6 rounded-2xl shadow-xl">
             <h3 class="text-lg font-bold mb-2">حدد المواقع:</h3>
@@ -82,9 +94,44 @@
                 <div class="flex items-center gap-2"><span class="flex-1 text-sm">كرتون</span><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('box_c', -1)">-</button><input type="number" id="box_c" class="w-10 text-center border" value="0"><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('box_c', 1)">+</button><select id="box_s" class="w-20 border"><option>كبير</option><option>صغير</option></select></div>
             </div>
 
-            <button onclick="sendWhatsApp()" class="w-full bg-green-600 text-white py-4 rounded-xl font-bold hover:bg-green-700 transition">إرسال الطلب عبر واتساب</button>
+            <button onclick="sendWhatsApp()" class="w-full bg-green-600 text-white py-4 rounded-xl font-bold hover:bg-green-700 transition shadow-md">إرسال الطلب عبر واتساب</button>
+            <p class="text-center text-[11px] text-slate-500 font-medium mt-3">
+                فريقنا متواجد للرد الفوري وإعطائك السعر المناسب خلال أقل من دقيقتين ⚡
+            </p>
         </div>
     </section>
+
+    <!-- قسم التقييمات ورابط خرائط جوجل -->
+    <section class="max-w-4xl mx-auto my-6 px-4">
+        <div class="bg-white p-6 rounded-2xl shadow-xl">
+            <h3 class="text-sm font-bold text-slate-700 mb-3 text-center">⭐ آراء بعض عملائنا الكرام</h3>
+            <div class="space-y-3 mb-4">
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-bold text-slate-900">أبو عبد الله </span>
+                        <span class="text-yellow-500">★★★★★</span>
+                    </div>
+                    <p class="text-slate-600">"ما شاء الله تبارك الله، شغل مرتب وسريع وفكوا و ركبوا الغرفة بدون ولا خدش. الله يعطيهم الععافية."</p>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-bold text-slate-900">سلطان </span>
+                        <span class="text-yellow-500">★★★★★</span>
+                    </div>
+                    <p class="text-slate-600">"خدمة التخزين عندهم ممتازة والمستودعات نظيفة وآمنة. أنصح بالتعامل معهم وبقوة."</p>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="https://maps.google.com/?q=مخازن+أرم+الشمال+للتخزين" target="_blank" class="text-xs text-blue-600 font-bold hover:underline">
+                    📍 اضغط هنا لمشاهدة جميع تقييماتنا الحقيقية على خرائط جوجل
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-6 text-xs text-gray-500">
+        &copy; 2026 إِرَمْ الشَّمَال للتخزين والنقل. جميع الحقوق محفوظة.
+    </footer>
 
     <script>
         var map = L.map('map').setView([24.7136, 46.6753], 12);
