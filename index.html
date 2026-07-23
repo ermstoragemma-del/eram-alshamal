@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نقل عفش بالرياض | فك وتركيب وتغليف | مخازن إرم الشمال</title>
+    <meta name="description" content="تبحث عن نقل عفش بالرياض؟ مخازن إرم الشمال توفر لك خدمة نقل أثاث احترافية مع الفك والتركيب والتغليف. نضمن لك وصول أثاثك بأمان. تواصل معنا الآن.">
+    <meta name="keywords" content="نقل عفش, نقل أثاث, نقل عفش بالرياض, شركة نقل عفش, فك وتركيب أثاث">
+    
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18213887104"></script>
     <script>
@@ -10,27 +16,22 @@
       gtag('config', 'AW-18213887104');
     </script>
 
-    <!-- كود التتبع عند الضغط -->
+    <!-- Event snippet for Contact conversion page -->
     <script>
-    function gtag_report_conversion(url) {
-      var callback = function () {
-        if (typeof(url) != 'undefined') {
-          window.location = url;
-        }
-      };
-      gtag('event', 'conversion', {
-          'send_to': 'AW-18213887104/uSHQCLEkh9AcEIC5h-1D',
-          'event_callback': callback
-      });
-      return false;
-    }
+      function gtag_report_conversion(url) {
+        var callback = function () {
+          if (typeof(url) != 'undefined') {
+            window.location = url;
+          }
+        };
+        gtag('event', 'conversion', {
+            'send_to': 'AW-18213887104/uSHQCLekh9AcEIC5h-1D',
+            'event_callback': callback
+        });
+        return false;
+      }
     </script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نقل عفش بالرياض | فك وتركيب وتغليف | مخازن إرم الشمال</title>
-    <meta name="description" content="تبحث عن نقل عفش بالرياض؟ مخازن إرم الشمال توفر لك خدمة نقل أثاث احترافية مع الفك والتركيب والتغليف. نضمن لك وصول أثاثك بأمان. تواصل معنا الآن.">
-    <meta name="keywords" content="نقل عفش, نقل أثاث, نقل عفش بالرياض, شركة نقل عفش, فك وتركيب أثاث">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -43,7 +44,7 @@
 </head>
 <body class="bg-gray-50 text-gray-800 pb-12">
 
-    <!-- زر الواتساب العائم الثابت مع رسالة توجيهية فوقه -->
+    <!-- زر الواتساب العائم الثابت -->
     <div class="fixed bottom-6 left-6 z-50 flex items-center gap-3">
         <div class="bg-white px-4 py-2 rounded-2xl shadow-lg border border-slate-200 text-xs font-bold text-slate-800 hidden sm:block animate-bounce">
             تواصل معنا واتساب واطلب خدمتك الآن ⚡
@@ -55,7 +56,6 @@
         </a>
     </div>
 
-    <!-- الترويسة الفخمة -->
     <header class="relative bg-[#FDFBF7] py-8 px-4 text-center shadow-sm overflow-hidden border-b border-[#E5E0D8]">
         <div class="absolute inset-0 opacity-[0.05]" style="background-image: repeating-linear-gradient(45deg, #A1887F 0, #A1887F 10px, transparent 0, transparent 20px), repeating-linear-gradient(-45deg, #A1887F 0, #A1887F 10px, #FDFBF7 0, #FDFBF7 20px);"></div>
         <div class="relative z-10 max-w-4xl mx-auto">
@@ -71,7 +71,6 @@
         </div>
     </header>
 
-    <!-- شبكة الصور الثلاث (معرض الأعمال) -->
     <section class="max-w-4xl mx-auto my-6 px-4">
         <div class="grid grid-cols-3 gap-2 mb-6">
             <img src="work1.png" alt="نقل أثاث" class="rounded-xl h-28 w-full object-cover shadow-md border border-white">
@@ -80,7 +79,6 @@
         </div>
     </section>
 
-    <!-- حاسبة الطلبات والخريطة -->
     <section class="max-w-4xl mx-auto my-6 px-4">
         <div class="bg-white p-6 rounded-2xl shadow-xl">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-2 gap-2">
@@ -98,7 +96,6 @@
                 <div><label class="block text-sm font-bold">طابق التنزيل</label><input type="number" id="f_to" class="w-full p-2 border rounded" value="0"></div>
             </div>
 
-            <!-- خيارات الفك والتغليف -->
             <div class="space-y-2 mb-6 border-b pb-4">
                 <div class="flex justify-between"><span>فك مكيفات؟</span><select id="ac_work" class="border rounded p-1"><option>لا</option><option>نعم</option></select></div>
                 <div class="flex justify-between"><span>فك دواليب؟</span><select id="wardrobe_work" class="border rounded p-1"><option>لا</option><option>نعم</option></select></div>
@@ -123,7 +120,7 @@
         </div>
     </section>
 
-    <!-- قسم السلايدر المتحرك للتقييمات (يتوقف للماوس واللمس بالاصبع للآيفون) -->
+    <!-- قسم السلايدر المتحرك للتقييمات -->
     <section class="max-w-4xl mx-auto my-6 px-4">
         <div class="bg-white p-6 rounded-2xl shadow-xl relative">
             <div class="flex justify-between items-center mb-4">
@@ -142,7 +139,7 @@
                 
                 <div class="min-w-[280px] sm:min-w-[320px] flex-1 bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs shadow-sm" style="scroll-snap-align: start;">
                     <div class="flex justify-between items-center mb-1">
-                        <span class="font-bold text-slate-900">أبو عبد الله </span>
+                        <span class="font-bold text-slate-900">أبو عبد الله</span>
                         <span class="text-yellow-500">★★★★★</span>
                     </div>
                     <p class="text-slate-600">"ما شاء الله تبارك الله، شغل مرتب وسريع وفكوا وركبوا الغرفة بدون ولا خدش. الله يعطيهم العافية."</p>
@@ -150,15 +147,7 @@
 
                 <div class="min-w-[280px] sm:min-w-[320px] flex-1 bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs shadow-sm" style="scroll-snap-align: start;">
                     <div class="flex justify-between items-center mb-1">
-                        <span class="font-bold text-slate-900">سلطان </span>
-                        <span class="text-yellow-500">★★★★★</span>
-                    </div>
-                    <p class="text-slate-600">"خدمة التخزين عندهم ممتازة والمستودعات نظيفة وآمنة. أنصح بالتعامل معهم وبقوة."</p>
-                </div>
-
-                <div class="min-w-[280px] sm:min-w-[320px] flex-1 bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs shadow-sm" style="scroll-snap-align: start;">
-                    <div class="flex justify-between items-center mb-1">
-                        <span class="font-bold text-slate-900"> ام سعود </span>
+                        <span class="font-bold text-slate-900">أم نورة</span>
                         <span class="text-yellow-500">★★★★★</span>
                     </div>
                     <p class="text-slate-600">"التزام بالمواعيد ودقة في التغليف، نقلت بيتي بالكامل في الرياض وما حسيت بأي تعب معهم."</p>
@@ -166,7 +155,15 @@
 
                 <div class="min-w-[280px] sm:min-w-[320px] flex-1 bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs shadow-sm" style="scroll-snap-align: start;">
                     <div class="flex justify-between items-center mb-1">
-                        <span class="font-bold text-slate-900"> amal </span>
+                        <span class="font-bold text-slate-900">سلطان القحطاني</span>
+                        <span class="text-yellow-500">★★★★★</span>
+                    </div>
+                    <p class="text-slate-600">"خدمة التخزين عندهم ممتازة والمستودعات نظيفة وآمنة. أنصح بالتعامل معهم وبقوة."</p>
+                </div>
+
+                <div class="min-w-[280px] sm:min-w-[320px] flex-1 bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs shadow-sm" style="scroll-snap-align: start;">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-bold text-slate-900">أم طلال</span>
                         <span class="text-yellow-500">★★★★★</span>
                     </div>
                     <p class="text-slate-600">"خدمة العملاء ممتازة والفريق محترف جداً في فك وتركيب المكيفات والدواليب بدون أي مشاكل."</p>
@@ -177,22 +174,23 @@
                         <span class="font-bold text-slate-900">محمد العتيبي</span>
                         <span class="text-yellow-500">★★★★★</span>
                     </div>
-                    <p class="text-slate-600">"أسعارهم مناسبة جداً مقارنة بجودة الخدمة العالية، الله يبارك لهم، وانشالله مو آخر تعامل."</p>
+                    <p class="text-slate-600">"أسعارهم مناسبة جداً مقارنة بجودة الخدمة العالية، الله يبارك لهم، وإن شاء الله مو آخر تعامل."</p>
                 </div>
 
                 <div class="min-w-[280px] sm:min-w-[320px] flex-1 bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs shadow-sm" style="scroll-snap-align: start;">
                     <div class="flex justify-between items-center mb-1">
-                        <span class="font-bold text-slate-900">عبد العزيز الشهري</span>
+                        <span class="font-bold text-slate-900">سارة</span>
                         <span class="text-yellow-500">★★★★★</span>
                     </div>
-                    <p class="text-slate-600">"المستودعات آمنة ونظيفة، خزنت عفشي عندهم لمدة شهور واستلمته بنفس الجودة والنظافة."</p>
+                    <p class="text-slate-600">"المستودعات آمنة ونظيفة، خزنت عفشي عندهم لمدة شهور واستلمته بنفس الجودة والنظافة. شكراً لكم."</p>
                 </div>
 
             </div>
 
+            <!-- رابط خرائط جوجل للتحقق -->
             <div class="text-center mt-4">
-                <a href="https://maps.app.goo.gl/YQJxj11NDkqNxtFfA" target="_blank" class="text-xs text-blue-600 font-bold hover:underline">
-                    📍 اضغط هنا لمشاهدة جميع تقييماتنا على خرائط جوجل
+                <a href="https://maps.app.goo.gl/cEnjeJE9UCNdunei9" target="_blank" class="text-xs text-blue-600 font-bold hover:underline">
+                    📍 اضغط هنا لمشاهدة جميع تقييماتنا الحقيقية على خرائط جوجل
                 </a>
             </div>
         </div>
@@ -236,7 +234,6 @@
             gtag_report_conversion(whatsappUrl);
         }
 
-        // السلايدر المتحرك مع دعم الماوس واللمس (للآيفون والجوالات)
         const container = document.getElementById('reviews-container');
         let autoScroll = setInterval(() => {
             if (container) {
@@ -248,7 +245,6 @@
             }
         }, 3500);
 
-        // إيقاف الحركة عند لمس الشاشة بإصبع المستخدم (آيفون/جوال) أو عند مرور الماوس
         function stopAutoScroll() { clearInterval(autoScroll); }
         function startAutoScroll() {
             autoScroll = setInterval(() => {
@@ -262,8 +258,6 @@
 
         container.addEventListener('mouseenter', stopAutoScroll);
         container.addEventListener('mouseleave', startAutoScroll);
-        
-        // أحداث اللمس خصيصاً للآيفون والجوالات
         container.addEventListener('touchstart', stopAutoScroll);
         container.addEventListener('touchend', startAutoScroll);
 
