@@ -33,8 +33,6 @@
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Cairo', sans-serif; }
@@ -80,37 +78,338 @@
     </section>
 
     <section class="max-w-4xl mx-auto my-6 px-4">
-        <div class="bg-white p-6 rounded-2xl shadow-xl">
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-2 gap-2">
-                <h3 class="text-lg font-bold">حدد المواقع:</h3>
+        <div class="bg-white p-6 rounded-2xl shadow-xl space-y-6">
+            
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                <h3 class="text-lg font-bold text-[#3E2723]">نموذج طلب نقل أو تخزين أثاث:</h3>
                 <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1.5 rounded-lg border border-amber-200">
-                    💡 بعد الانتهاء من تحديد المواقع والأغراض، ستجد زر إرسال الطلب في أسفل الصفحة
+                    💡 حدد البيانات والأغراض، ثم اضغط إرسال الطلب في الأسفل ⚡
                 </span>
             </div>
-            
-            <p class="text-xs text-red-500 mb-4 font-bold">تنبيه: (أزرق=تحميل) - (أحمر=تنزيل)</p>
-            <div id="map" class="h-48 w-full rounded-xl border mb-4"></div>
-            
-            <div class="grid grid-cols-2 gap-4 mb-4">
-                <div><label class="block text-sm font-bold">طابق التحميل</label><input type="number" id="f_from" class="w-full p-2 border rounded" value="0"></div>
-                <div><label class="block text-sm font-bold">طابق التنزيل</label><input type="number" id="f_to" class="w-full p-2 border rounded" value="0"></div>
+
+            <!-- 1. البيانات الأساسية -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-4">
+                <h4 class="font-bold text-sm text-[#3E2723] border-b pb-2">📋 البيانات الأساسية</h4>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold mb-1">نوع العقار</label>
+                        <select id="property_type" class="w-full p-2 border rounded text-sm bg-white">
+                            <option>شقة</option>
+                            <option>فلة</option>
+                            <option>قصر</option>
+                            <option>مكتب</option>
+                            <option>شاليه</option>
+                            <option>أخرى</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold mb-1">موعد النقل المناسب</label>
+                        <input type="text" id="move_time" placeholder="مثال: الخميس القادم صباحاً" class="w-full p-2 border rounded text-sm bg-white">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold mb-1">حي التحميل (موقع العقار الحالي)</label>
+                        <input type="text" id="district_from" placeholder="اكتب اسم الحي فقط" class="w-full p-2 border rounded text-sm bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold mb-1">حي التنزيل (الموقع الجديد)</label>
+                        <input type="text" id="district_to" placeholder="اكتب اسم الحي فقط" class="w-full p-2 border rounded text-sm bg-white">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold mb-1">طابق التحميل</label>
+                        <input type="number" id="f_from" class="w-full p-2 border rounded text-sm bg-white" value="0" min="0">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold mb-1">طابق التنزيل</label>
+                        <input type="number" id="f_to" class="w-full p-2 border rounded text-sm bg-white" value="0" min="0">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold mb-1">رقم التواصل</label>
+                    <input type="tel" id="contact_phone" placeholder="05xxxxxxxx" class="w-full p-2 border rounded text-sm bg-white">
+                </div>
             </div>
 
-            <div class="space-y-2 mb-6 border-b pb-4">
-                <div class="flex justify-between"><span>فك مكيفات؟</span><select id="ac_work" class="border rounded p-1"><option>لا</option><option>نعم</option></select></div>
-                <div class="flex justify-between"><span>فك دواليب؟</span><select id="wardrobe_work" class="border rounded p-1"><option>لا</option><option>نعم</option></select></div>
-                <div class="flex justify-between"><span>طلب تغليف؟</span><select id="packaging_work" class="border rounded p-1"><option>لا</option><option>نعم</option></select></div>
+            <!-- 2. مكونات الأثاث والأجهزة -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-4">
+                <h4 class="font-bold text-sm text-[#3E2723] border-b pb-2">🛋️ مكونات الأثاث والأجهزة الكهربائية</h4>
+                
+                <script>
+                    function toggleItem(id) {
+                        let wrap = document.getElementById(id + '_wrap');
+                        let countIn = document.getElementById(id + '_count');
+                        if(wrap.classList.contains('hidden')) {
+                            wrap.classList.remove('hidden');
+                            if(countIn && countIn.value == '0') countIn.value = '1';
+                        } else {
+                            wrap.classList.add('hidden');
+                            if(countIn) countIn.value = '0';
+                        }
+                    }
+                    function changeVal(id, delta) { 
+                        let el = document.getElementById(id); 
+                        let val = parseInt(el.value) + delta; 
+                        if(val >= 0) el.value = val; 
+                    }
+                </script>
+
+                <!-- العناصر بنظام نعم/لا وعدد -->
+                <div class="space-y-3 text-xs">
+                    <!-- ثلاجة -->
+                    <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
+                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_fridge" onchange="toggleItem('fridge')" class="w-4 h-4 accent-[#A1887F]"> ثلاجة</label>
+                        <div id="fridge_wrap" class="hidden flex items-center gap-2">
+                            <span class="text-gray-500">العدد:</span>
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('fridge_count', -1)">-</button>
+                            <input type="number" id="fridge_count" class="w-10 text-center border rounded" value="0">
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('fridge_count', 1)">+</button>
+                        </div>
+                    </div>
+
+                    <!-- غسالة -->
+                    <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
+                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_washer" onchange="toggleItem('washer')" class="w-4 h-4 accent-[#A1887F]"> غسالة</label>
+                        <div id="washer_wrap" class="hidden flex items-center gap-2">
+                            <span class="text-gray-500">العدد:</span>
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('washer_count', -1)">-</button>
+                            <input type="number" id="washer_count" class="w-10 text-center border rounded" value="0">
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('washer_count', 1)">+</button>
+                        </div>
+                    </div>
+
+                    <!-- فرن -->
+                    <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
+                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_oven" onchange="toggleItem('oven')" class="w-4 h-4 accent-[#A1887F]"> فرن</label>
+                        <div id="oven_wrap" class="hidden flex items-center gap-2">
+                            <span class="text-gray-500">العدد:</span>
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('oven_count', -1)">-</button>
+                            <input type="number" id="oven_count" class="w-10 text-center border rounded" value="0">
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('oven_count', 1)">+</button>
+                        </div>
+                    </div>
+
+                    <!-- ميكرويف -->
+                    <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
+                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_microwave" onchange="toggleItem('microwave')" class="w-4 h-4 accent-[#A1887F]"> ميكرويف</label>
+                        <div id="microwave_wrap" class="hidden flex items-center gap-2">
+                            <span class="text-gray-500">العدد:</span>
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('microwave_count', -1)">-</button>
+                            <input type="number" id="microwave_count" class="w-10 text-center border rounded" value="0">
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('microwave_count', 1)">+</button>
+                        </div>
+                    </div>
+
+                    <!-- تلفزيون -->
+                    <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
+                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_tv" onchange="toggleItem('tv')" class="w-4 h-4 accent-[#A1887F]"> تلفزيون</label>
+                        <div id="tv_wrap" class="hidden flex items-center gap-2">
+                            <span class="text-gray-500">العدد:</span>
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('tv_count', -1)">-</button>
+                            <input type="number" id="tv_count" class="w-10 text-center border rounded" value="0">
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('tv_count', 1)">+</button>
+                        </div>
+                    </div>
+
+                    <!-- أجهزة رياضية -->
+                    <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
+                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_sport" onchange="toggleItem('sport')" class="w-4 h-4 accent-[#A1887F]"> أجهزة رياضية</label>
+                        <div id="sport_wrap" class="hidden flex items-center gap-2">
+                            <span class="text-gray-500">العدد:</span>
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('sport_count', -1)">-</button>
+                            <input type="number" id="sport_count" class="w-10 text-center border rounded" value="0">
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('sport_count', 1)">+</button>
+                        </div>
+                    </div>
+
+                    <!-- أجهزة كهربائية أخرى -->
+                    <div>
+                        <label class="block font-bold mb-1">أجهزة كهربائية أخرى (إن وجدت):</label>
+                        <input type="text" id="other_appliances" placeholder="اكتبها هنا..." class="w-full p-2 border rounded bg-white">
+                    </div>
+
+                    <!-- لوحات جدارية -->
+                    <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
+                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_paintings" onchange="toggleItem('paintings')" class="w-4 h-4 accent-[#A1887F]"> لوحات جدارية</label>
+                        <div id="paintings_wrap" class="hidden flex items-center gap-2">
+                            <span class="text-gray-500">العدد:</span>
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('paintings_count', -1)">-</button>
+                            <input type="number" id="paintings_count" class="w-10 text-center border rounded" value="0">
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('paintings_count', 1)">+</button>
+                        </div>
+                    </div>
+
+                    <!-- كنب -->
+                    <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
+                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_sofa" onchange="toggleItem('sofa')" class="w-4 h-4 accent-[#A1887F]"> كنب</label>
+                        <div id="sofa_wrap" class="hidden flex items-center gap-2">
+                            <span class="text-gray-500">العدد:</span>
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('sofa_count', -1)">-</button>
+                            <input type="number" id="sofa_count" class="w-10 text-center border rounded" value="0">
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('sofa_count', 1)">+</button>
+                        </div>
+                    </div>
+
+                    <!-- جلسات أرضية -->
+                    <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
+                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_floor" onchange="toggleItem('floor')" class="w-4 h-4 accent-[#A1887F]"> جلسات أرضية</label>
+                        <div id="floor_wrap" class="hidden flex items-center gap-2">
+                            <span class="text-gray-500">العدد:</span>
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('floor_count', -1)">-</button>
+                            <input type="number" id="floor_count" class="w-10 text-center border rounded" value="0">
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('floor_count', 1)">+</button>
+                        </div>
+                    </div>
+
+                    <!-- طاولة -->
+                    <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
+                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_table" onchange="toggleItem('table')" class="w-4 h-4 accent-[#A1887F]"> طاولة</label>
+                        <div id="table_wrap" class="hidden flex items-center gap-2">
+                            <span class="text-gray-500">العدد:</span>
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('table_count', -1)">-</button>
+                            <input type="number" id="table_count" class="w-10 text-center border rounded" value="0">
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('table_count', 1)">+</button>
+                        </div>
+                    </div>
+
+                    <!-- كراسي -->
+                    <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
+                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_chairs" onchange="toggleItem('chairs')" class="w-4 h-4 accent-[#A1887F]"> كراسي</label>
+                        <div id="chairs_wrap" class="hidden flex items-center gap-2">
+                            <span class="text-gray-500">العدد:</span>
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('chairs_count', -1)">-</button>
+                            <input type="number" id="chairs_count" class="w-10 text-center border rounded" value="0">
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('chairs_count', 1)">+</button>
+                        </div>
+                    </div>
+
+                    <!-- عدد الكراتين -->
+                    <div class="bg-white p-3 rounded-lg border space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold">عدد الكراتين أو الصناديق (إن وجدت):</span>
+                            <div class="flex items-center gap-2">
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('boxes_count', -1)">-</button>
+                                <input type="number" id="boxes_count" class="w-12 text-center border rounded" value="0">
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('boxes_count', 1)">+</button>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-amber-700 font-bold">⚠️ تنبيه: يرجى الانتباه وتوضيح المحتويات القابلة للكسر داخل الكراتين.</p>
+                    </div>
+
+                </div>
             </div>
 
-            <div class="space-y-3 mb-6" id="items-list">
-                <script>function changeVal(id, delta) { let el = document.getElementById(id); let val = parseInt(el.value) + delta; if(val >= 0) el.value = val; } </script>
-                <div class="flex items-center gap-2"><span class="flex-1 text-sm">غرفة نوم</span><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('bed_c', -1)">-</button><input type="number" id="bed_c" class="w-10 text-center border" value="0"><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('bed_c', 1)">+</button><select id="bed_s" class="w-20 border"><option>كبير</option><option>متوسط</option></select></div>
-                <div class="flex items-center gap-2"><span class="flex-1 text-sm">ثلاجة</span><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('fridge_c', -1)">-</button><input type="number" id="fridge_c" class="w-10 text-center border" value="0"><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('fridge_c', 1)">+</button><select id="fridge_s" class="w-20 border"><option>كبير</option><option>متوسط</option></select></div>
-                <div class="flex items-center gap-2"><span class="flex-1 text-sm">فرن</span><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('oven_c', -1)">-</button><input type="number" id="oven_c" class="w-10 text-center border" value="0"><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('oven_c', 1)">+</button><select id="oven_s" class="w-20 border"><option>كبير</option><option>صغير</option></select></div>
-                <div class="flex items-center gap-2"><span class="flex-1 text-sm">تلفزيون</span><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('tv_c', -1)">-</button><input type="number" id="tv_c" class="w-10 text-center border" value="0"><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('tv_c', 1)">+</button><select id="tv_s" class="w-20 border"><option>كبير</option><option>صغير</option></select></div>
-                <div class="flex items-center gap-2"><span class="flex-1 text-sm">كنب</span><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('sofa_c', -1)">-</button><input type="number" id="sofa_c" class="w-10 text-center border" value="0"><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('sofa_c', 1)">+</button><select id="sofa_s" class="w-20 border"><option>كبير</option><option>متوسط</option></select></div>
-                <div class="flex items-center gap-2"><span class="flex-1 text-sm">طاولة</span><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('table_c', -1)">-</button><input type="number" id="table_c" class="w-10 text-center border" value="0"><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('table_c', 1)">+</button><select id="table_s" class="w-20 border"><option>كبير</option><option>متوسط</option></select></div>
-                <div class="flex items-center gap-2"><span class="flex-1 text-sm">كرتون</span><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('box_c', -1)">-</button><input type="number" id="box_c" class="w-10 text-center border" value="0"><button class="bg-gray-100 px-3 py-1 rounded" onclick="changeVal('box_c', 1)">+</button><select id="box_s" class="w-20 border"><option>كبير</option><option>صغير</option></select></div>
+            <!-- 3. طلبات الفك والتركيب -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-4 text-xs">
+                <h4 class="font-bold text-sm text-[#3E2723] border-b pb-2">🔧 طلبات الفك والتركيب</h4>
+
+                <!-- مكيفات -->
+                <div class="bg-white p-3 rounded-lg border space-y-2">
+                    <div class="flex items-center justify-between">
+                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="work_ac" onchange="toggleItem('ac')" class="w-4 h-4 accent-[#A1887F]"> فك وتركيب مكيفات</label>
+                        <div id="ac_wrap" class="hidden flex items-center gap-2">
+                            <span class="text-gray-500">العدد:</span>
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('ac_count', -1)">-</button>
+                            <input type="number" id="ac_count" class="w-10 text-center border rounded" value="0">
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('ac_count', 1)">+</button>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center pt-1">
+                        <span class="text-gray-600">نوع المكيفات:</span>
+                        <select id="ac_type" class="border rounded p-1 bg-white">
+                            <option>سبليت (فك وتركيب بـ 150 ريال)</option>
+                            <option>كونسيلد</option>
+                            <option>كاسيت</option>
+                            <option>صحراوي</option>
+                            <option>شباك</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- غرف النوم -->
+                <div class="bg-white p-3 rounded-lg border space-y-2">
+                    <div class="flex items-center justify-between">
+                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="work_bed" onchange="toggleItem('bed')" class="w-4 h-4 accent-[#A1887F]"> فك وتركيب غرف نوم</label>
+                        <div id="bed_wrap" class="hidden flex items-center gap-2">
+                            <span class="text-gray-500">العدد:</span>
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('bed_count', -1)">-</button>
+                            <input type="number" id="bed_count" class="w-10 text-center border rounded" value="0">
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('bed_count', 1)">+</button>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center pt-1">
+                        <span class="text-gray-600">نوع الغرف:</span>
+                        <select id="bed_type" class="border rounded p-1 bg-white">
+                            <option>جاهز</option>
+                            <option>تفصيل</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- مطابخ -->
+                <div class="bg-white p-3 rounded-lg border space-y-2">
+                    <div class="flex items-center justify-between">
+                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="work_kitchen" onchange="toggleItem('kitchen')" class="w-4 h-4 accent-[#A1887F]"> فك وتركيب مطابخ</label>
+                        <div id="kitchen_wrap" class="hidden flex items-center gap-2">
+                            <span class="text-gray-500">العدد:</span>
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('kitchen_count', -1)">-</button>
+                            <input type="number" id="kitchen_count" class="w-10 text-center border rounded" value="0">
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('kitchen_count', 1)">+</button>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center pt-1">
+                        <span class="text-gray-600">نوع المطبخ:</span>
+                        <select id="kitchen_type" class="border rounded p-1 bg-white">
+                            <option>جاهز</option>
+                            <option>تفصيل</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- ستائر -->
+                <div class="bg-white p-3 rounded-lg border space-y-2">
+                    <div class="flex items-center justify-between">
+                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="work_curtain" onchange="toggleItem('curtain')" class="w-4 h-4 accent-[#A1887F]"> تركيب ستائر</label>
+                        <div id="curtain_wrap" class="hidden flex items-center gap-2">
+                            <span class="text-gray-500">العدد:</span>
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('curtain_count', -1)">-</button>
+                            <input type="number" id="curtain_count" class="w-10 text-center border rounded" value="0">
+                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('curtain_count', 1)">+</button>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center pt-1">
+                        <span class="text-gray-600">نوع الستائر:</span>
+                        <select id="curtain_type" class="border rounded p-1 bg-white">
+                            <option>جاهز</option>
+                            <option>تفصيل</option>
+                            <option>ستائر ويفي Wavy (تركيب بـ 30 ريال للستارة)</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 4. طلبات إضافية -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3 text-xs">
+                <h4 class="font-bold text-sm text-[#3E2723] border-b pb-2">📦 طلبات إضافية</h4>
+                <div class="flex justify-between items-center bg-white p-2.5 rounded-lg border">
+                    <span>تغليف قبل التحميل:</span>
+                    <select id="extra_packaging" class="border rounded p-1 bg-white"><option>لا</option><option>نعم</option></select>
+                </div>
+                <div class="flex justify-between items-center bg-white p-2.5 rounded-lg border">
+                    <span>توفير كراتين فاضية:</span>
+                    <select id="extra_boxes" class="border rounded p-1 bg-white"><option>لا</option><option>نعم</option></select>
+                </div>
+                <div class="flex justify-between items-center bg-white p-2.5 rounded-lg border">
+                    <span>تخزين بالمستودع:</span>
+                    <select id="extra_storage" class="border rounded p-1 bg-white"><option>لا</option><option>نعم</option></select>
+                </div>
             </div>
 
             <button onclick="sendWhatsApp()" class="w-full bg-green-600 text-white py-4 rounded-xl font-bold hover:bg-green-700 transition shadow-md">إرسال الطلب عبر واتساب</button>
@@ -201,34 +500,50 @@
     </footer>
 
     <script>
-        var map = L.map('map').setView([24.7136, 46.6753], 12);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-        var m1, m2;
-        map.on('click', function(e) {
-            if (!m1) { m1 = L.marker(e.latlng).addTo(map).bindPopup("التحميل").openPopup(); }
-            else if (!m2) { m2 = L.marker(e.latlng, {icon: L.divIcon({className: 'bg-red-500 rounded-full w-4 h-4'})}).addTo(map).bindPopup("التنزيل").openPopup(); }
-        });
-
         function sendWhatsApp() {
-            if(!m1 || !m2) { alert("حدد المواقع على الخريطة أولاً!"); return; }
-            let l1 = `https://www.google.com/maps/search/?api=1&query=${m1.getLatLng().lat},${m1.getLatLng().lng}`;
-            let l2 = `https://www.google.com/maps/search/?api=1&query=${m2.getLatLng().lat},${m2.getLatLng().lng}`;
-            
-            let msg = "طلب نقل إرم الشمال:\n";
-            msg += "غرفة نوم: " + document.getElementById('bed_c').value + " (" + document.getElementById('bed_s').value + ")\n";
-            msg += "ثلاجة: " + document.getElementById('fridge_c').value + " (" + document.getElementById('fridge_s').value + ")\n";
-            msg += "فرن: " + document.getElementById('oven_c').value + " (" + document.getElementById('oven_s').value + ")\n";
-            msg += "تلفزيون: " + document.getElementById('tv_c').value + " (" + document.getElementById('tv_s').value + ")\n";
-            msg += "كنب: " + document.getElementById('sofa_c').value + " (" + document.getElementById('sofa_s').value + ")\n";
-            msg += "طاولة: " + document.getElementById('table_c').value + " (" + document.getElementById('table_s').value + ")\n";
-            msg += "كرتون: " + document.getElementById('box_c').value + " (" + document.getElementById('box_s').value + ")\n";
-            msg += "فك مكيفات: " + document.getElementById('ac_work').value + "\n";
-            msg += "فك دواليب: " + document.getElementById('wardrobe_work').value + "\n";
-            msg += "طلب تغليف: " + document.getElementById('packaging_work').value + "\n";
-            msg += "طابق التحميل: " + document.getElementById('f_from').value + "\n";
-            msg += "طابق التنزيل: " + document.getElementById('f_to').value + "\n";
-            msg += "التحميل: " + l1 + "\n";
-            msg += "التنزيل: " + l2;
+            let pType = document.getElementById('property_type').value;
+            let mTime = document.getElementById('move_time').value || 'لم يُحدد';
+            let dFrom = document.getElementById('district_from').value || 'لم يُحدد';
+            let dTo = document.getElementById('district_to').value || 'لم يُحدد';
+            let fFrom = document.getElementById('f_from').value;
+            let fTo = document.getElementById('f_to').value;
+            let phone = document.getElementById('contact_phone').value || 'لم يُحدد';
+
+            let msg = "📋 *طلب نقل جديد - إرم الشمال*:\n\n";
+            msg += "▫️ *البيانات الأساسية*:\n";
+            msg += "• نوع العقار: " + pType + "\n";
+            msg += "• موعد النقل: " + mTime + "\n";
+            msg += "• حي التحميل: " + dFrom + " (طابق " + fFrom + ")\n";
+            msg += "• حي التنزيل: " + dTo + " (طابق " + fTo + ")\n";
+            msg += "• رقم التواصل: " + phone + "\n\n";
+
+            msg += "▫️ *مكونات الأثاث والأجهزة*:\n";
+            if(document.getElementById('item_fridge').checked) msg += "• ثلاجة: " + document.getElementById('fridge_count').value + "\n";
+            if(document.getElementById('item_washer').checked) msg += "• غسالة: " + document.getElementById('washer_count').value + "\n";
+            if(document.getElementById('item_oven').checked) msg += "• فرن: " + document.getElementById('oven_count').value + "\n";
+            if(document.getElementById('item_microwave').checked) msg += "• ميكرويف: " + document.getElementById('microwave_count').value + "\n";
+            if(document.getElementById('item_tv').checked) msg += "• تلفزيون: " + document.getElementById('tv_count').value + "\n";
+            if(document.getElementById('item_sport').checked) msg += "• أجهزة رياضية: " + document.getElementById('sport_count').value + "\n";
+            let otherApp = document.getElementById('other_appliances').value;
+            if(otherApp) msg += "• أجهزة أخرى: " + otherApp + "\n";
+            if(document.getElementById('item_paintings').checked) msg += "• لوحات جدارية: " + document.getElementById('paintings_count').value + "\n";
+            if(document.getElementById('item_sofa').checked) msg += "• كنب: " + document.getElementById('sofa_count').value + "\n";
+            if(document.getElementById('item_floor').checked) msg += "• جلسات أرضية: " + document.getElementById('floor_count').value + "\n";
+            if(document.getElementById('item_table').checked) msg += "• طاولة: " + document.getElementById('table_count').value + "\n";
+            if(document.getElementById('item_chairs').checked) msg += "• كراسي: " + document.getElementById('chairs_count').value + "\n";
+            let boxesC = document.getElementById('boxes_count').value;
+            if(boxesC > 0) msg += "• كراتين / صناديق: " + boxesC + " (تنبيه عن القابل للكسر)\n";
+
+            msg += "\n▫️ *طلبات الفك والتركيب*:\n";
+            if(document.getElementById('work_ac').checked) msg += "• فك وتركيب مكيفات (" + document.getElementById('ac_type').value + "): " + document.getElementById('ac_count').value + "\n";
+            if(document.getElementById('work_bed').checked) msg += "• فك وتركيب غرف نوم (" + document.getElementById('bed_type').value + "): " + document.getElementById('bed_count').value + "\n";
+            if(document.getElementById('work_kitchen').checked) msg += "• فك وتركيب مطابخ (" + document.getElementById('kitchen_type').value + "): " + document.getElementById('kitchen_count').value + "\n";
+            if(document.getElementById('work_curtain').checked) msg += "• تركيب ستائر (" + document.getElementById('curtain_type').value + "): " + document.getElementById('curtain_count').value + "\n";
+
+            msg += "\n▫️ *طلبات إضافية*:\n";
+            msg += "• تغليف قبل التحميل: " + document.getElementById('extra_packaging').value + "\n";
+            msg += "• كراتين فاضية: " + document.getElementById('extra_boxes').value + "\n";
+            msg += "• تخزين بالمستودع: " + document.getElementById('extra_storage').value + "\n";
 
             let whatsappUrl = "https://wa.me/966534308457?text=" + encodeURIComponent(msg);
             gtag_report_conversion(whatsappUrl);
