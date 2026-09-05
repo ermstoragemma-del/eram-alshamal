@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نقل اثاث و عفش الرياض | فك وتغليف وتخزين | إرم الشمال</title>
-    <meta name="description" content="تبحث عن شركة نقل أثاث بالرياض؟ إرم الشمال تقدم لك أفضل خدمات نقل العفش وتخزين الأثاث مع الفك والتركيب والتغليف الاحترافي. تواصل معنا الآن.">
-    <meta name="keywords" content="نقل أثاث, نقل عفش بالرياض, شركة نقل أثاث, تخزين أثاث, مستودعات تخزين, فك وتركيب وتغليف">
+    <title>نقل اثاث و تنظيف بالرياض | إرم الشمال</title>
+    <meta name="description" content="إرم الشمال تقدم أفضل خدمات نقل العفش وتخزين الأثاث وخدمات التنظيف الشامل بالرياض. تواصل معنا الآن.">
+    <meta name="keywords" content="نقل أثاث, نقل عفش بالرياض, تخزين أثاث, شركه تنظيف بالرياض">
     <link rel="icon" type="image/png" href="logoo.png">
-   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18213887104"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-18213887104');
-</script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18213887104"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-18213887104');
+    </script>
     <!-- Event snippet for Contact conversion page -->
     <script>
       function gtag_report_conversion(url) {
@@ -31,7 +30,6 @@
         return false;
       }
     </script>
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
@@ -61,7 +59,7 @@
                 <img src="logo.png" alt="إرم الشمال" class="h-20 w-20 object-contain">
             </div>
             <h1 class="text-3xl font-bold text-[#3E2723] mb-1">مخازن إرم الشمال</h1>
-            <p class="text-[#8D6E63] mb-6 font-medium">أفضل خدمات نقل الأثاث وتخزين العفش بالرياض مع الفك والتغليف</p>
+            <p class="text-[#8D6E63] mb-6 font-medium">أفضل خدمات نقل الأثاث، التخزين، وخدمات النظافة بالرياض</p>
             <div class="flex justify-center gap-3">
                 <a href="https://wa.me/966534308457" onclick="return gtag_report_conversion('https://wa.me/966534308457');" class="bg-[#A1887F] hover:bg-[#8D6E63] text-white px-6 py-2 rounded-full font-bold transition shadow-sm">واتساب</a>
                 <a href="tel:+966534308457" onclick="return gtag_report_conversion('tel:+966534308457');" class="bg-transparent hover:bg-[#F0EDE6] text-[#5D4037] px-6 py-2 rounded-full font-bold transition border border-[#A1887F]">اتصل بنا</a>
@@ -77,342 +75,417 @@
         </div>
     </section>
 
+    <!-- اختيار نوع الخدمة في البداية -->
     <section class="max-w-4xl mx-auto my-6 px-4">
         <div class="bg-white p-6 rounded-2xl shadow-xl space-y-6">
             
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-                <h3 class="text-lg font-bold text-[#3E2723]">نموذج طلب نقل أو تخزين أثاث:</h3>
-                <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1.5 rounded-lg border border-amber-200">
-                    💡 حدد البيانات والأغراض، ثم اضغط إرسال الطلب في الأسفل ⚡
-                </span>
+            <div class="text-center space-y-2">
+                <h3 class="text-xl font-bold text-[#3E2723]">اختر الخدمة المطلوبة لبدء الطلب:</h3>
+                <p class="text-xs text-slate-500">يرجى تحديد الخدمة لتظهر لك استمارة البيانات الخاصة بها مباشرة ⚡</p>
             </div>
 
-            <!-- 1. البيانات الأساسية -->
-            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-4">
-                <h4 class="font-bold text-sm text-[#3E2723] border-b pb-2">📋 البيانات الأساسية</h4>
-                
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <button type="button" onclick="switchService('moving')" id="btn_moving" class="p-4 rounded-xl border-2 border-[#A1887F] bg-[#FDFBF7] text-[#3E2723] font-bold flex items-center justify-center gap-3 transition shadow-sm hover:shadow-md">
+                    <span class="text-xl">🛋️</span> نقل وتخزين الأثاث
+                </button>
+                <button type="button" onclick="switchService('cleaning')" id="btn_cleaning" class="p-4 rounded-xl border-2 border-slate-200 bg-white text-slate-600 font-bold flex items-center justify-center gap-3 transition shadow-sm hover:shadow-md">
+                    <span class="text-xl">✨</span> خدمات النظافة الشاملة
+                </button>
+            </div>
+
+            <!-- تنبيه المعاينة لباقي العقارات (غير الشقق) -->
+            <div id="villa_alert" class="bg-amber-50 border border-amber-200 p-3 rounded-xl text-xs text-amber-800 font-medium flex items-start gap-2 hidden">
+                <span class="text-base">📍</span>
+                <p><strong>تنبيه هام:</strong> نظراً لطبيعة هذا العقار، تتطلب الطلبات <strong>زيارة ميدانية مجانية</strong> لتقدير السعر بدقة وتوفير العمالة والشاحنات الكافية (باستثناء الشقق).</p>
+            </div>
+
+            <!-- نموذج النقل والتخزين -->
+            <div id="form_moving" class="space-y-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                    <h3 class="text-lg font-bold text-[#3E2723]">نموذج طلب نقل أو تخزين أثاث:</h3>
+                    <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1.5 rounded-lg border border-amber-200">
+                        💡 حدد البيانات والأغراض، ثم اضغط إرسال الطلب في الأسفل ⚡
+                    </span>
+                </div>
+
+                <!-- 1. البيانات الأساسية -->
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-4">
+                    <h4 class="font-bold text-sm text-[#3E2723] border-b pb-2">📋 البيانات الأساسية</h4>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold mb-1">نوع العقار</label>
+                            <select id="property_type" onchange="checkPropertyType()" class="w-full p-2 border rounded text-sm bg-white">
+                                <option>شقة</option>
+                                <option>فلة</option>
+                                <option>قصر</option>
+                                <option>مكتب</option>
+                                <option>شاليه</option>
+                                <option>أخرى</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold mb-1">موعد النقل المناسب</label>
+                            <input type="text" id="move_time" placeholder="مثال: الخميس القادم صباحاً" class="w-full p-2 border rounded text-sm bg-white">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold mb-1">حي التحميل (موقع العقار الحالي)</label>
+                            <input type="text" id="district_from" placeholder="اكتب اسم الحي فقط" class="w-full p-2 border rounded text-sm bg-white">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold mb-1">حي التنزيل (الموقع الجديد)</label>
+                            <input type="text" id="district_to" placeholder="اكتب اسم الحي فقط" class="w-full p-2 border rounded text-sm bg-white">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold mb-1">طابق التحميل</label>
+                            <input type="number" id="f_from" class="w-full p-2 border rounded text-sm bg-white" value="0" min="0">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold mb-1">طابق التنزيل</label>
+                            <input type="number" id="f_to" class="w-full p-2 border rounded text-sm bg-white" value="0" min="0">
+                        </div>
+                    </div>
+
                     <div>
-                        <label class="block text-xs font-bold mb-1">نوع العقار</label>
-                        <select id="property_type" class="w-full p-2 border rounded text-sm bg-white">
+                        <label class="block text-xs font-bold mb-1">رقم التواصل</label>
+                        <input type="tel" id="contact_phone_moving" placeholder="05xxxxxxxx" class="w-full p-2 border rounded text-sm bg-white">
+                    </div>
+                </div>
+
+                <!-- 2. مكونات الأثاث والأجهزة -->
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-4">
+                    <h4 class="font-bold text-sm text-[#3E2723] border-b pb-2">🛋️ مكونات الأثاث والأجهزة الكهربائية</h4>
+                    
+                    <script>
+                        function toggleItem(id) {
+                            let wrap = document.getElementById(id + '_wrap');
+                            let countIn = document.getElementById(id + '_count');
+                            if(wrap.classList.contains('hidden')) {
+                                wrap.classList.remove('hidden');
+                                if(countIn && countIn.value == '0') countIn.value = '1';
+                            } else {
+                                wrap.classList.add('hidden');
+                                if(countIn) countIn.value = '0';
+                            }
+                        }
+                        function changeVal(id, delta) { 
+                            let el = document.getElementById(id); 
+                            let val = parseInt(el.value) + delta; 
+                            if(val >= 0) el.value = val; 
+                        }
+                    </script>
+
+                    <div class="space-y-3 text-xs">
+                        <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
+                            <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_fridge" onchange="toggleItem('fridge')" class="w-4 h-4 accent-[#A1887F]"> ثلاجة</label>
+                            <div id="fridge_wrap" class="hidden flex items-center gap-2">
+                                <span class="text-gray-500">العدد:</span>
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('fridge_count', -1)">-</button>
+                                <input type="number" id="fridge_count" class="w-10 text-center border rounded" value="0">
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('fridge_count', 1)">+</button>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
+                            <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_washer" onchange="toggleItem('washer')" class="w-4 h-4 accent-[#A1887F]"> غسالة</label>
+                            <div id="washer_wrap" class="hidden flex items-center gap-2">
+                                <span class="text-gray-500">العدد:</span>
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('washer_count', -1)">-</button>
+                                <input type="number" id="washer_count" class="w-10 text-center border rounded" value="0">
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('washer_count', 1)">+</button>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
+                            <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_oven" onchange="toggleItem('oven')" class="w-4 h-4 accent-[#A1887F]"> فرن</label>
+                            <div id="oven_wrap" class="hidden flex items-center gap-2">
+                                <span class="text-gray-500">العدد:</span>
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('oven_count', -1)">-</button>
+                                <input type="number" id="oven_count" class="w-10 text-center border rounded" value="0">
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('oven_count', 1)">+</button>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
+                            <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_microwave" onchange="toggleItem('microwave')" class="w-4 h-4 accent-[#A1887F]"> ميكرويف</label>
+                            <div id="microwave_wrap" class="hidden flex items-center gap-2">
+                                <span class="text-gray-500">العدد:</span>
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('microwave_count', -1)">-</button>
+                                <input type="number" id="microwave_count" class="w-10 text-center border rounded" value="0">
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('microwave_count', 1)">+</button>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
+                            <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_tv" onchange="toggleItem('tv')" class="w-4 h-4 accent-[#A1887F]"> تلفزيون</label>
+                            <div id="tv_wrap" class="hidden flex items-center gap-2">
+                                <span class="text-gray-500">العدد:</span>
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('tv_count', -1)">-</button>
+                                <input type="number" id="tv_count" class="w-10 text-center border rounded" value="0">
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('tv_count', 1)">+</button>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
+                            <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_sport" onchange="toggleItem('sport')" class="w-4 h-4 accent-[#A1887F]"> أجهزة رياضية</label>
+                            <div id="sport_wrap" class="hidden flex items-center gap-2">
+                                <span class="text-gray-500">العدد:</span>
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('sport_count', -1)">-</button>
+                                <input type="number" id="sport_count" class="w-10 text-center border rounded" value="0">
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('sport_count', 1)">+</button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block font-bold mb-1">أجهزة كهربائية أخرى (إن وجدت):</label>
+                            <input type="text" id="other_appliances" placeholder="اكتبها هنا..." class="w-full p-2 border rounded bg-white">
+                        </div>
+
+                        <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
+                            <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_paintings" onchange="toggleItem('paintings')" class="w-4 h-4 accent-[#A1887F]"> لوحات جدارية</label>
+                            <div id="paintings_wrap" class="hidden flex items-center gap-2">
+                                <span class="text-gray-500">العدد:</span>
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('paintings_count', -1)">-</button>
+                                <input type="number" id="paintings_count" class="w-10 text-center border rounded" value="0">
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('paintings_count', 1)">+</button>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
+                            <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_sofa" onchange="toggleItem('sofa')" class="w-4 h-4 accent-[#A1887F]"> كنب</label>
+                            <div id="sofa_wrap" class="hidden flex items-center gap-2">
+                                <span class="text-gray-500">العدد:</span>
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('sofa_count', -1)">-</button>
+                                <input type="number" id="sofa_count" class="w-10 text-center border rounded" value="0">
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('sofa_count', 1)">+</button>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
+                            <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_floor" onchange="toggleItem('floor')" class="w-4 h-4 accent-[#A1887F]"> جلسات أرضية</label>
+                            <div id="floor_wrap" class="hidden flex items-center gap-2">
+                                <span class="text-gray-500">العدد:</span>
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('floor_count', -1)">-</button>
+                                <input type="number" id="floor_count" class="w-10 text-center border rounded" value="0">
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('floor_count', 1)">+</button>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
+                            <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_table" onchange="toggleItem('table')" class="w-4 h-4 accent-[#A1887F]"> طاولة</label>
+                            <div id="table_wrap" class="hidden flex items-center gap-2">
+                                <span class="text-gray-500">العدد:</span>
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('table_count', -1)">-</button>
+                                <input type="number" id="table_count" class="w-10 text-center border rounded" value="0">
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('table_count', 1)">+</button>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
+                            <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_chairs" onchange="toggleItem('chairs')" class="w-4 h-4 accent-[#A1887F]"> كراسي</label>
+                            <div id="chairs_wrap" class="hidden flex items-center gap-2">
+                                <span class="text-gray-500">العدد:</span>
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('chairs_count', -1)">-</button>
+                                <input type="number" id="chairs_count" class="w-10 text-center border rounded" value="0">
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('chairs_count', 1)">+</button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-3 rounded-lg border space-y-2">
+                            <div class="flex items-center justify-between">
+                                <span class="font-bold">عدد الكراتين الموجودة عند العميل:</span>
+                                <div class="flex items-center gap-2">
+                                    <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('boxes_count', -1)">-</button>
+                                    <input type="number" id="boxes_count" class="w-12 text-center border rounded" value="0">
+                                    <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('boxes_count', 1)">+</button>
+                                </div>
+                            </div>
+                            <p class="text-[11px] text-amber-700 font-bold">⚠️ تنبيه: يرجى الانتباه وتوضيح المحتويات القابلة للكسر داخل الكراتين.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. طلبات الفك والتركيب -->
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-4 text-xs">
+                    <h4 class="font-bold text-sm text-[#3E2723] border-b pb-2">🔧 طلبات الفك والتركيب</h4>
+
+                    <div class="bg-white p-3 rounded-lg border space-y-2">
+                        <div class="flex items-center justify-between">
+                            <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="work_ac" onchange="toggleItem('ac')" class="w-4 h-4 accent-[#A1887F]"> فك وتركيب مكيفات</label>
+                            <div id="ac_wrap" class="hidden flex items-center gap-2">
+                                <span class="text-gray-500">العدد:</span>
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('ac_count', -1)">-</button>
+                                <input type="number" id="ac_count" class="w-10 text-center border rounded" value="0">
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('ac_count', 1)">+</button>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center pt-1">
+                            <span class="text-gray-600">نوع المكيفات:</span>
+                            <select id="ac_type" class="border rounded p-1 bg-white">
+                                <option>سبليت (فك فقط بـ 150 ريال)</option>
+                                <option>شباك (فك فقط بـ 100 ريال)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-3 rounded-lg border space-y-2">
+                        <div class="flex items-center justify-between">
+                            <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="work_bed" onchange="toggleItem('bed')" class="w-4 h-4 accent-[#A1887F]"> فك وتركيب غرف نوم</label>
+                            <div id="bed_wrap" class="hidden flex items-center gap-2">
+                                <span class="text-gray-500">العدد:</span>
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('bed_count', -1)">-</button>
+                                <input type="number" id="bed_count" class="w-10 text-center border rounded" value="0">
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('bed_count', 1)">+</button>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center pt-1">
+                            <span class="text-gray-600">نوع الغرف:</span>
+                            <select id="bed_type" class="border rounded p-1 bg-white">
+                                <option>جاهز</option>
+                                <option>تفصيل</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-3 rounded-lg border space-y-2">
+                        <div class="flex items-center justify-between">
+                            <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="work_curtain" onchange="toggleItem('curtain')" class="w-4 h-4 accent-[#A1887F]"> تركيب ستائر</label>
+                            <div id="curtain_wrap" class="hidden flex items-center gap-2">
+                                <span class="text-gray-500">العدد:</span>
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('curtain_count', -1)">-</button>
+                                <input type="number" id="curtain_count" class="w-10 text-center border rounded" value="0">
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('curtain_count', 1)">+</button>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center pt-1">
+                            <span class="text-gray-600">نوع الستائر:</span>
+                            <select id="curtain_type" class="border rounded p-1 bg-white">
+                                <option>جاهز</option>
+                                <option>تفصيل</option>
+                                <option>ستائر ويفي Wavy (تركيب بـ 50 ريال للستارة)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. طلبات إضافية -->
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3 text-xs">
+                    <h4 class="font-bold text-sm text-[#3E2723] border-b pb-2">📦 طلبات إضافية</h4>
+                    <div class="flex justify-between items-center bg-white p-2.5 rounded-lg border">
+                        <span>تغليف قبل التحميل:</span>
+                        <select id="extra_packaging" class="border rounded p-1 bg-white"><option>لا</option><option>نعم</option></select>
+                    </div>
+                    
+                    <!-- توفير كراتين فاضية مع خيار العدد والتنبيه -->
+                    <div class="bg-white p-3 rounded-lg border space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold">توفير كراتين فاضية إضافية:</span>
+                            <select id="extra_boxes_option" onchange="toggleExtraBoxes()" class="border rounded p-1 bg-white">
+                                <option value="لا">لا</option>
+                                <option value="نعم">نعم</option>
+                            </select>
+                        </div>
+                        <div id="extra_boxes_wrap" class="hidden flex items-center justify-between pt-2 border-t">
+                            <span class="text-gray-600">عدد الكراتين المطلوبة (الكرتون بـ 10 ريال):</span>
+                            <div class="flex items-center gap-2">
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('extra_boxes_count', -1)">-</button>
+                                <input type="number" id="extra_boxes_count" class="w-12 text-center border rounded" value="0">
+                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('extra_boxes_count', 1)">+</button>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-amber-700 font-bold hidden" id="extra_boxes_alert">⚠️ تنبيه: سعر الكرتون الإضافي الواحد 10 ريال.</p>
+                    </div>
+                    <script>
+                        function toggleExtraBoxes() {
+                            let opt = document.getElementById('extra_boxes_option').value;
+                            let wrap = document.getElementById('extra_boxes_wrap');
+                            let alertP = document.getElementById('extra_boxes_alert');
+                            let countIn = document.getElementById('extra_boxes_count');
+                            if(opt === 'نعم') {
+                                wrap.classList.remove('hidden');
+                                alertP.classList.remove('hidden');
+                                if(countIn.value == '0') countIn.value = '1';
+                            } else {
+                                wrap.classList.add('hidden');
+                                alertP.classList.add('hidden');
+                                countIn.value = '0';
+                            }
+                        }
+                    </script>
+
+                    <div class="flex justify-between items-center bg-white p-2.5 rounded-lg border">
+                        <span>تخزين بالمستودع:</span>
+                        <select id="extra_storage" class="border rounded p-1 bg-white"><option>لا</option><option>نعم</option></select>
+                    </div>
+                </div>
+
+                <button onclick="sendWhatsAppMoving()" class="w-full bg-green-600 text-white py-4 rounded-xl font-bold hover:bg-green-700 transition shadow-md">إرسال طلب النقل عبر واتساب</button>
+            </div>
+
+            <!-- نموذج خدمات النظافة -->
+            <div id="form_cleaning" class="space-y-6 hidden">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                    <h3 class="text-lg font-bold text-[#3E2723]">نموذج طلب خدمات النظافة الشاملة:</h3>
+                    <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1.5 rounded-lg border border-blue-200">
+                        💡 حدد تفاصيل النظافة، ثم اضغط إرسال الطلب ⚡
+                    </span>
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-4 text-xs">
+                    <h4 class="font-bold text-sm text-[#3E2723] border-b pb-2">🧹 تفاصيل خدمة التنظيف</h4>
+
+                    <div>
+                        <label class="block font-bold mb-1">نوع العقار المراد تنظيفه</label>
+                        <select id="clean_property_type" onchange="checkCleanPropertyType()" class="w-full p-2 border rounded text-sm bg-white">
                             <option>شقة</option>
                             <option>فلة</option>
                             <option>قصر</option>
                             <option>مكتب</option>
-                            <option>شاليه</option>
-                            <option>أخرى</option>
+                            <option>واحداث بعد البناء/تجديد</option>
                         </select>
                     </div>
+
+                    <!-- تنبيه النظافة لباقي العقارات (غير الشقق) -->
+                    <div id="clean_villa_alert" class="bg-amber-50 border border-amber-200 p-3 rounded-xl text-xs text-amber-800 font-medium flex items-start gap-2 hidden">
+                        <span class="text-base">📍</span>
+                        <p><strong>تنبيه هام:</strong> نظراً لطبيعة هذا العقار، تتطلب طلبات التنظيف <strong>زيارة ميدانية</strong> لمعاينة المساحة وتحديد عدد العمالة والمواد اللازمة بدقة (باستثناء الشقق).</p>
+                    </div>
+
                     <div>
-                        <label class="block text-xs font-bold mb-1">موعد النقل المناسب</label>
-                        <input type="text" id="move_time" placeholder="مثال: الخميس القادم صباحاً" class="w-full p-2 border rounded text-sm bg-white">
+                        <label class="block font-bold mb-1">نوع التنظيف المطلوبة</label>
+                        <select id="clean_type" class="w-full p-2 border rounded text-sm bg-white">
+                            <option>تنظيف عام شامل</option>
+                            <option>تنظيف بعد البناء أو التجديد</option>
+                            <option>غسيل مجالس وكنب وتفصيل</option>
+                            <option>جلي وتلميع أرضيات</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block font-bold mb-1">الموعد المناسب</label>
+                        <input type="text" id="clean_time" placeholder="مثال: السبت القادم صباحاً" class="w-full p-2 border rounded text-sm bg-white">
+                    </div>
+
+                    <div>
+                        <label class="block font-bold mb-1">اسم الحي بالرياض</label>
+                        <input type="text" id="clean_district" placeholder="اكتب اسم الحي فقط" class="w-full p-2 border rounded text-sm bg-white">
+                    </div>
+
+                    <div>
+                        <label class="block font-bold mb-1">رقم التواصل</label>
+                        <input type="tel" id="contact_phone_cleaning" placeholder="05xxxxxxxx" class="w-full p-2 border rounded text-sm bg-white">
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-bold mb-1">حي التحميل (موقع العقار الحالي)</label>
-                        <input type="text" id="district_from" placeholder="اكتب اسم الحي فقط" class="w-full p-2 border rounded text-sm bg-white">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold mb-1">حي التنزيل (الموقع الجديد)</label>
-                        <input type="text" id="district_to" placeholder="اكتب اسم الحي فقط" class="w-full p-2 border rounded text-sm bg-white">
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-bold mb-1">طابق التحميل</label>
-                        <input type="number" id="f_from" class="w-full p-2 border rounded text-sm bg-white" value="0" min="0">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold mb-1">طابق التنزيل</label>
-                        <input type="number" id="f_to" class="w-full p-2 border rounded text-sm bg-white" value="0" min="0">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold mb-1">رقم التواصل</label>
-                    <input type="tel" id="contact_phone" placeholder="05xxxxxxxx" class="w-full p-2 border rounded text-sm bg-white">
-                </div>
+                <button onclick="sendWhatsAppCleaning()" class="w-full bg-green-600 text-white py-4 rounded-xl font-bold hover:bg-green-700 transition shadow-md">إرسال طلب النظافة عبر واتساب</button>
             </div>
 
-            <!-- 2. مكونات الأثاث والأجهزة -->
-            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-4">
-                <h4 class="font-bold text-sm text-[#3E2723] border-b pb-2">🛋️ مكونات الأثاث والأجهزة الكهربائية</h4>
-                
-                <script>
-                    function toggleItem(id) {
-                        let wrap = document.getElementById(id + '_wrap');
-                        let countIn = document.getElementById(id + '_count');
-                        if(wrap.classList.contains('hidden')) {
-                            wrap.classList.remove('hidden');
-                            if(countIn && countIn.value == '0') countIn.value = '1';
-                        } else {
-                            wrap.classList.add('hidden');
-                            if(countIn) countIn.value = '0';
-                        }
-                    }
-                    function changeVal(id, delta) { 
-                        let el = document.getElementById(id); 
-                        let val = parseInt(el.value) + delta; 
-                        if(val >= 0) el.value = val; 
-                    }
-                </script>
-
-                <!-- العناصر بنظام نعم/لا وعدد -->
-                <div class="space-y-3 text-xs">
-                    <!-- ثلاجة -->
-                    <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
-                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_fridge" onchange="toggleItem('fridge')" class="w-4 h-4 accent-[#A1887F]"> ثلاجة</label>
-                        <div id="fridge_wrap" class="hidden flex items-center gap-2">
-                            <span class="text-gray-500">العدد:</span>
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('fridge_count', -1)">-</button>
-                            <input type="number" id="fridge_count" class="w-10 text-center border rounded" value="0">
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('fridge_count', 1)">+</button>
-                        </div>
-                    </div>
-
-                    <!-- غسالة -->
-                    <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
-                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_washer" onchange="toggleItem('washer')" class="w-4 h-4 accent-[#A1887F]"> غسالة</label>
-                        <div id="washer_wrap" class="hidden flex items-center gap-2">
-                            <span class="text-gray-500">العدد:</span>
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('washer_count', -1)">-</button>
-                            <input type="number" id="washer_count" class="w-10 text-center border rounded" value="0">
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('washer_count', 1)">+</button>
-                        </div>
-                    </div>
-
-                    <!-- فرن -->
-                    <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
-                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_oven" onchange="toggleItem('oven')" class="w-4 h-4 accent-[#A1887F]"> فرن</label>
-                        <div id="oven_wrap" class="hidden flex items-center gap-2">
-                            <span class="text-gray-500">العدد:</span>
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('oven_count', -1)">-</button>
-                            <input type="number" id="oven_count" class="w-10 text-center border rounded" value="0">
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('oven_count', 1)">+</button>
-                        </div>
-                    </div>
-
-                    <!-- ميكرويف -->
-                    <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
-                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_microwave" onchange="toggleItem('microwave')" class="w-4 h-4 accent-[#A1887F]"> ميكرويف</label>
-                        <div id="microwave_wrap" class="hidden flex items-center gap-2">
-                            <span class="text-gray-500">العدد:</span>
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('microwave_count', -1)">-</button>
-                            <input type="number" id="microwave_count" class="w-10 text-center border rounded" value="0">
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('microwave_count', 1)">+</button>
-                        </div>
-                    </div>
-
-                    <!-- تلفزيون -->
-                    <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
-                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_tv" onchange="toggleItem('tv')" class="w-4 h-4 accent-[#A1887F]"> تلفزيون</label>
-                        <div id="tv_wrap" class="hidden flex items-center gap-2">
-                            <span class="text-gray-500">العدد:</span>
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('tv_count', -1)">-</button>
-                            <input type="number" id="tv_count" class="w-10 text-center border rounded" value="0">
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('tv_count', 1)">+</button>
-                        </div>
-                    </div>
-
-                    <!-- أجهزة رياضية -->
-                    <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
-                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_sport" onchange="toggleItem('sport')" class="w-4 h-4 accent-[#A1887F]"> أجهزة رياضية</label>
-                        <div id="sport_wrap" class="hidden flex items-center gap-2">
-                            <span class="text-gray-500">العدد:</span>
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('sport_count', -1)">-</button>
-                            <input type="number" id="sport_count" class="w-10 text-center border rounded" value="0">
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('sport_count', 1)">+</button>
-                        </div>
-                    </div>
-
-                    <!-- أجهزة كهربائية أخرى -->
-                    <div>
-                        <label class="block font-bold mb-1">أجهزة كهربائية أخرى (إن وجدت):</label>
-                        <input type="text" id="other_appliances" placeholder="اكتبها هنا..." class="w-full p-2 border rounded bg-white">
-                    </div>
-
-                    <!-- لوحات جدارية -->
-                    <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
-                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_paintings" onchange="toggleItem('paintings')" class="w-4 h-4 accent-[#A1887F]"> لوحات جدارية</label>
-                        <div id="paintings_wrap" class="hidden flex items-center gap-2">
-                            <span class="text-gray-500">العدد:</span>
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('paintings_count', -1)">-</button>
-                            <input type="number" id="paintings_count" class="w-10 text-center border rounded" value="0">
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('paintings_count', 1)">+</button>
-                        </div>
-                    </div>
-
-                    <!-- كنب -->
-                    <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
-                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_sofa" onchange="toggleItem('sofa')" class="w-4 h-4 accent-[#A1887F]"> كنب</label>
-                        <div id="sofa_wrap" class="hidden flex items-center gap-2">
-                            <span class="text-gray-500">العدد:</span>
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('sofa_count', -1)">-</button>
-                            <input type="number" id="sofa_count" class="w-10 text-center border rounded" value="0">
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('sofa_count', 1)">+</button>
-                        </div>
-                    </div>
-
-                    <!-- جلسات أرضية -->
-                    <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
-                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_floor" onchange="toggleItem('floor')" class="w-4 h-4 accent-[#A1887F]"> جلسات أرضية</label>
-                        <div id="floor_wrap" class="hidden flex items-center gap-2">
-                            <span class="text-gray-500">العدد:</span>
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('floor_count', -1)">-</button>
-                            <input type="number" id="floor_count" class="w-10 text-center border rounded" value="0">
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('floor_count', 1)">+</button>
-                        </div>
-                    </div>
-
-                    <!-- طاولة -->
-                    <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
-                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_table" onchange="toggleItem('table')" class="w-4 h-4 accent-[#A1887F]"> طاولة</label>
-                        <div id="table_wrap" class="hidden flex items-center gap-2">
-                            <span class="text-gray-500">العدد:</span>
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('table_count', -1)">-</button>
-                            <input type="number" id="table_count" class="w-10 text-center border rounded" value="0">
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('table_count', 1)">+</button>
-                        </div>
-                    </div>
-
-                    <!-- كراسي -->
-                    <div class="flex items-center justify-between bg-white p-2.5 rounded-lg border">
-                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="item_chairs" onchange="toggleItem('chairs')" class="w-4 h-4 accent-[#A1887F]"> كراسي</label>
-                        <div id="chairs_wrap" class="hidden flex items-center gap-2">
-                            <span class="text-gray-500">العدد:</span>
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('chairs_count', -1)">-</button>
-                            <input type="number" id="chairs_count" class="w-10 text-center border rounded" value="0">
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('chairs_count', 1)">+</button>
-                        </div>
-                    </div>
-
-                    <!-- عدد الكراتين -->
-                    <div class="bg-white p-3 rounded-lg border space-y-2">
-                        <div class="flex items-center justify-between">
-                            <span class="font-bold">عدد الكراتين أو الصناديق (إن وجدت):</span>
-                            <div class="flex items-center gap-2">
-                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('boxes_count', -1)">-</button>
-                                <input type="number" id="boxes_count" class="w-12 text-center border rounded" value="0">
-                                <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('boxes_count', 1)">+</button>
-                            </div>
-                        </div>
-                        <p class="text-[11px] text-amber-700 font-bold">⚠️ تنبيه: يرجى الانتباه وتوضيح المحتويات القابلة للكسر داخل الكراتين.</p>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- 3. طلبات الفك والتركيب -->
-            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-4 text-xs">
-                <h4 class="font-bold text-sm text-[#3E2723] border-b pb-2">🔧 طلبات الفك والتركيب</h4>
-
-                <!-- مكيفات -->
-                <div class="bg-white p-3 rounded-lg border space-y-2">
-                    <div class="flex items-center justify-between">
-                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="work_ac" onchange="toggleItem('ac')" class="w-4 h-4 accent-[#A1887F]"> فك وتركيب مكيفات</label>
-                        <div id="ac_wrap" class="hidden flex items-center gap-2">
-                            <span class="text-gray-500">العدد:</span>
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('ac_count', -1)">-</button>
-                            <input type="number" id="ac_count" class="w-10 text-center border rounded" value="0">
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('ac_count', 1)">+</button>
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-center pt-1">
-                        <span class="text-gray-600">نوع المكيفات:</span>
-                        <select id="ac_type" class="border rounded p-1 bg-white">
-                            <option>سبليت (فك وتركيب بـ 150 ريال)</option>
-                            <option>كونسيلد</option>
-                            <option>كاسيت</option>
-                            <option>صحراوي</option>
-                            <option>شباك</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- غرف النوم -->
-                <div class="bg-white p-3 rounded-lg border space-y-2">
-                    <div class="flex items-center justify-between">
-                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="work_bed" onchange="toggleItem('bed')" class="w-4 h-4 accent-[#A1887F]"> فك وتركيب غرف نوم</label>
-                        <div id="bed_wrap" class="hidden flex items-center gap-2">
-                            <span class="text-gray-500">العدد:</span>
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('bed_count', -1)">-</button>
-                            <input type="number" id="bed_count" class="w-10 text-center border rounded" value="0">
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('bed_count', 1)">+</button>
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-center pt-1">
-                        <span class="text-gray-600">نوع الغرف:</span>
-                        <select id="bed_type" class="border rounded p-1 bg-white">
-                            <option>جاهز</option>
-                            <option>تفصيل</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- مطابخ -->
-                <div class="bg-white p-3 rounded-lg border space-y-2">
-                    <div class="flex items-center justify-between">
-                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="work_kitchen" onchange="toggleItem('kitchen')" class="w-4 h-4 accent-[#A1887F]"> فك وتركيب مطابخ</label>
-                        <div id="kitchen_wrap" class="hidden flex items-center gap-2">
-                            <span class="text-gray-500">العدد:</span>
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('kitchen_count', -1)">-</button>
-                            <input type="number" id="kitchen_count" class="w-10 text-center border rounded" value="0">
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('kitchen_count', 1)">+</button>
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-center pt-1">
-                        <span class="text-gray-600">نوع المطبخ:</span>
-                        <select id="kitchen_type" class="border rounded p-1 bg-white">
-                            <option>جاهز</option>
-                            <option>تفصيل</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- ستائر -->
-                <div class="bg-white p-3 rounded-lg border space-y-2">
-                    <div class="flex items-center justify-between">
-                        <label class="font-bold flex items-center gap-2 cursor-pointer"><input type="checkbox" id="work_curtain" onchange="toggleItem('curtain')" class="w-4 h-4 accent-[#A1887F]"> تركيب ستائر</label>
-                        <div id="curtain_wrap" class="hidden flex items-center gap-2">
-                            <span class="text-gray-500">العدد:</span>
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('curtain_count', -1)">-</button>
-                            <input type="number" id="curtain_count" class="w-10 text-center border rounded" value="0">
-                            <button type="button" class="bg-gray-100 px-2.5 py-1 rounded font-bold" onclick="changeVal('curtain_count', 1)">+</button>
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-center pt-1">
-                        <span class="text-gray-600">نوع الستائر:</span>
-                        <select id="curtain_type" class="border rounded p-1 bg-white">
-                            <option>جاهز</option>
-                            <option>تفصيل</option>
-                            <option>ستائر ويفي Wavy (تركيب بـ 30 ريال للستارة)</option>
-                        </select>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- 4. طلبات إضافية -->
-            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3 text-xs">
-                <h4 class="font-bold text-sm text-[#3E2723] border-b pb-2">📦 طلبات إضافية</h4>
-                <div class="flex justify-between items-center bg-white p-2.5 rounded-lg border">
-                    <span>تغليف قبل التحميل:</span>
-                    <select id="extra_packaging" class="border rounded p-1 bg-white"><option>لا</option><option>نعم</option></select>
-                </div>
-                <div class="flex justify-between items-center bg-white p-2.5 rounded-lg border">
-                    <span>توفير كراتين فاضية:</span>
-                    <select id="extra_boxes" class="border rounded p-1 bg-white"><option>لا</option><option>نعم</option></select>
-                </div>
-                <div class="flex justify-between items-center bg-white p-2.5 rounded-lg border">
-                    <span>تخزين بالمستودع:</span>
-                    <select id="extra_storage" class="border rounded p-1 bg-white"><option>لا</option><option>نعم</option></select>
-                </div>
-            </div>
-
-            <button onclick="sendWhatsApp()" class="w-full bg-green-600 text-white py-4 rounded-xl font-bold hover:bg-green-700 transition shadow-md">إرسال الطلب عبر واتساب</button>
             <p class="text-center text-[11px] text-slate-500 font-medium mt-3">
                 فريقنا متواجد للرد الفوري وإعطائك السعر المناسب خلال أقل من دقيقتين ⚡
             </p>
@@ -435,7 +508,6 @@
             </div>
 
             <div id="reviews-container" class="flex gap-4 overflow-x-auto no-scrollbar scroll-smooth pb-2" style="scroll-snap-type: x mandatory;">
-                
                 <div class="min-w-[280px] sm:min-w-[320px] flex-1 bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs shadow-sm" style="scroll-snap-align: start;">
                     <div class="flex justify-between items-center mb-1">
                         <span class="font-bold text-slate-900">أبو عبد الله</span>
@@ -443,7 +515,6 @@
                     </div>
                     <p class="text-slate-600">"ما شاء الله تبارك الله، شغل مرتب وسريع وفكوا وركبوا الغرفة بدون ولا خدش. الله يعطيهم العافية."</p>
                 </div>
-
                 <div class="min-w-[280px] sm:min-w-[320px] flex-1 bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs shadow-sm" style="scroll-snap-align: start;">
                     <div class="flex justify-between items-center mb-1">
                         <span class="font-bold text-slate-900">أم نورة</span>
@@ -451,7 +522,6 @@
                     </div>
                     <p class="text-slate-600">"التزام بالمواعيد ودقة في التغليف، نقلت بيتي بالكامل في الرياض وما حسيت بأي تعب معهم."</p>
                 </div>
-
                 <div class="min-w-[280px] sm:min-w-[320px] flex-1 bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs shadow-sm" style="scroll-snap-align: start;">
                     <div class="flex justify-between items-center mb-1">
                         <span class="font-bold text-slate-900">سلطان القحطاني</span>
@@ -459,34 +529,8 @@
                     </div>
                     <p class="text-slate-600">"خدمة التخزين عندهم ممتازة والمستودعات نظيفة وآمنة. أنصح بالتعامل معهم وبقوة."</p>
                 </div>
-
-                <div class="min-w-[280px] sm:min-w-[320px] flex-1 bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs shadow-sm" style="scroll-snap-align: start;">
-                    <div class="flex justify-between items-center mb-1">
-                        <span class="font-bold text-slate-900">أم طلال</span>
-                        <span class="text-yellow-500">★★★★★</span>
-                    </div>
-                    <p class="text-slate-600">"خدمة العملاء ممتازة والفريق محترف جداً في فك وتركيب المكيفات والدواليب بدون أي مشاكل."</p>
-                </div>
-
-                <div class="min-w-[280px] sm:min-w-[320px] flex-1 bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs shadow-sm" style="scroll-snap-align: start;">
-                    <div class="flex justify-between items-center mb-1">
-                        <span class="font-bold text-slate-900">محمد العتيبي</span>
-                        <span class="text-yellow-500">★★★★★</span>
-                    </div>
-                    <p class="text-slate-600">"أسعارهم مناسبة جداً مقارنة بجودة الخدمة العالية، الله يبارك لهم، وإن شاء الله مو آخر تعامل."</p>
-                </div>
-
-                <div class="min-w-[280px] sm:min-w-[320px] flex-1 bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs shadow-sm" style="scroll-snap-align: start;">
-                    <div class="flex justify-between items-center mb-1">
-                        <span class="font-bold text-slate-900">سارة</span>
-                        <span class="text-yellow-500">★★★★★</span>
-                    </div>
-                    <p class="text-slate-600">"المستودعات آمنة ونظيفة، خزنت عفشي عندهم لمدة شهور واستلمته بنفس الجودة والنظافة. شكراً لكم."</p>
-                </div>
-
             </div>
 
-            <!-- رابط خرائط جوجل للتحقق -->
             <div class="text-center mt-4">
                 <a href="https://maps.app.goo.gl/cEnjeJE9UCNdunei9" target="_blank" class="text-xs text-blue-600 font-bold hover:underline">
                     📍 اضغط هنا لمشاهدة جميع تقييماتنا الحقيقية على خرائط جوجل
@@ -500,18 +544,60 @@
     </footer>
 
     <script>
-        function sendWhatsApp() {
+        function switchService(type) {
+            let btnMoving = document.getElementById('btn_moving');
+            let btnCleaning = document.getElementById('btn_cleaning');
+            let formMoving = document.getElementById('form_moving');
+            let formCleaning = document.getElementById('form_cleaning');
+
+            if(type === 'moving') {
+                btnMoving.className = "p-4 rounded-xl border-2 border-[#A1887F] bg-[#FDFBF7] text-[#3E2723] font-bold flex items-center justify-center gap-3 transition shadow-sm hover:shadow-md";
+                btnCleaning.className = "p-4 rounded-xl border-2 border-slate-200 bg-white text-slate-600 font-bold flex items-center justify-center gap-3 transition shadow-sm hover:shadow-md";
+                formMoving.classList.remove('hidden');
+                formCleaning.classList.add('hidden');
+            } else {
+                btnCleaning.className = "p-4 rounded-xl border-2 border-[#A1887F] bg-[#FDFBF7] text-[#3E2723] font-bold flex items-center justify-center gap-3 transition shadow-sm hover:shadow-md";
+                btnMoving.className = "p-4 rounded-xl border-2 border-slate-200 bg-white text-slate-600 font-bold flex items-center justify-center gap-3 transition shadow-sm hover:shadow-md";
+                formCleaning.classList.remove('hidden');
+                formMoving.classList.add('hidden');
+            }
+        }
+
+        function checkPropertyType() {
+            let pType = document.getElementById('property_type').value;
+            let alertBox = document.getElementById('villa_alert');
+            if(pType !== 'شقة') {
+                alertBox.classList.remove('hidden');
+            } else {
+                alertBox.classList.add('hidden');
+            }
+        }
+
+        function checkCleanPropertyType() {
+            let cpType = document.getElementById('clean_property_type').value;
+            let alertBox = document.getElementById('clean_villa_alert');
+            if(cpType !== 'شقة') {
+                alertBox.classList.remove('hidden');
+            } else {
+                alertBox.classList.add('hidden');
+            }
+        }
+
+        function sendWhatsAppMoving() {
             let pType = document.getElementById('property_type').value;
             let mTime = document.getElementById('move_time').value || 'لم يُحدد';
             let dFrom = document.getElementById('district_from').value || 'لم يُحدد';
             let dTo = document.getElementById('district_to').value || 'لم يُحدد';
             let fFrom = document.getElementById('f_from').value;
             let fTo = document.getElementById('f_to').value;
-            let phone = document.getElementById('contact_phone').value || 'لم يُحدد';
+            let phone = document.getElementById('contact_phone_moving').value || 'لم يُحدد';
 
             let msg = "📋 *طلب نقل جديد - إرم الشمال*:\n\n";
             msg += "▫️ *البيانات الأساسية*:\n";
             msg += "• نوع العقار: " + pType + "\n";
+            if(pType !== 'شقة') {
+                msg += "⚠️ *(تنبيه: يتطلب زيارة ميدانية)*\n";
+            }
             msg += "• موعد النقل: " + mTime + "\n";
             msg += "• حي التحميل: " + dFrom + " (طابق " + fFrom + ")\n";
             msg += "• حي التنزيل: " + dTo + " (طابق " + fTo + ")\n";
@@ -532,18 +618,49 @@
             if(document.getElementById('item_table').checked) msg += "• طاولة: " + document.getElementById('table_count').value + "\n";
             if(document.getElementById('item_chairs').checked) msg += "• كراسي: " + document.getElementById('chairs_count').value + "\n";
             let boxesC = document.getElementById('boxes_count').value;
-            if(boxesC > 0) msg += "• كراتين / صناديق: " + boxesC + " (تنبيه عن القابل للكسر)\n";
+            if(boxesC > 0) {
+                msg += "• الكراتين الموجودة عند العميل: " + boxesC + "\n";
+            }
 
             msg += "\n▫️ *طلبات الفك والتركيب*:\n";
-            if(document.getElementById('work_ac').checked) msg += "• فك وتركيب مكيفات (" + document.getElementById('ac_type').value + "): " + document.getElementById('ac_count').value + "\n";
-            if(document.getElementById('work_bed').checked) msg += "• فك وتركيب غرف نوم (" + document.getElementById('bed_type').value + "): " + document.getElementById('bed_count').value + "\n";
-            if(document.getElementById('work_kitchen').checked) msg += "• فك وتركيب مطابخ (" + document.getElementById('kitchen_type').value + "): " + document.getElementById('kitchen_count').value + "\n";
-            if(document.getElementById('work_curtain').checked) msg += "• تركيب ستائر (" + document.getElementById('curtain_type').value + "): " + document.getElementById('curtain_count').value + "\n";
+            if(document.getElementById('work_ac').checked) msg += "• مكيفات (" + document.getElementById('ac_type').value + "): " + document.getElementById('ac_count').value + "\n";
+            if(document.getElementById('work_bed').checked) msg += "• غرف نوم (" + document.getElementById('bed_type').value + "): " + document.getElementById('bed_count').value + "\n";
+            if(document.getElementById('work_curtain').checked) msg += "• ستائر (" + document.getElementById('curtain_type').value + "): " + document.getElementById('curtain_count').value + "\n";
 
             msg += "\n▫️ *طلبات إضافية*:\n";
-            msg += "• تغليف قبل التحميل: " + document.getElementById('extra_packaging').value + "\n";
-            msg += "• كراتين فاضية: " + document.getElementById('extra_boxes').value + "\n";
-            msg += "• تخزين بالمستودع: " + document.getElementById('extra_storage').value + "\n";
+            msg += "• تغليف: " + document.getElementById('extra_packaging').value + "\n";
+            
+            let extraBoxesOpt = document.getElementById('extra_boxes_option').value;
+            if(extraBoxesOpt === 'نعم') {
+                let extraBoxesCount = document.getElementById('extra_boxes_count').value;
+                let totalCost = extraBoxesCount * 10;
+                msg += "• كراتين إضافية مطلوبة: " + extraBoxesCount + " (التكلفة: " + totalCost + " ريال - الكرتون بـ 10 ريال)\n";
+            } else {
+                msg += "• كراتين إضافية مطلوبة: لا\n";
+            }
+
+            msg += "• تخزين: " + document.getElementById('extra_storage').value + "\n";
+
+            let whatsappUrl = "https://wa.me/966534308457?text=" + encodeURIComponent(msg);
+            gtag_report_conversion(whatsappUrl);
+        }
+
+        function sendWhatsAppCleaning() {
+            let cpType = document.getElementById('clean_property_type').value;
+            let cType = document.getElementById('clean_type').value;
+            let cTime = document.getElementById('clean_time').value || 'لم يُحدد';
+            let cDistrict = document.getElementById('clean_district').value || 'لم يُحدد';
+            let phone = document.getElementById('contact_phone_cleaning').value || 'لم يُحدد';
+
+            let msg = "✨ *طلب خدمات تنظيف - إرم الشمال*:\n\n";
+            msg += "• نوع العقار: " + cpType + "\n";
+            if(cpType !== 'شقة') {
+                msg += "⚠️ *(تنبيه: يتطلب زيارة ميدانية)*\n";
+            }
+            msg += "• نوع الخدمة: " + cType + "\n";
+            msg += "• موعد التنفيذ: " + cTime + "\n";
+            msg += "• الحي: " + cDistrict + "\n";
+            msg += "• رقم التواصل: " + phone + "\n";
 
             let whatsappUrl = "https://wa.me/966534308457?text=" + encodeURIComponent(msg);
             gtag_report_conversion(whatsappUrl);
